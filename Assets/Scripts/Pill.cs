@@ -16,6 +16,12 @@ public class Pill : MonoBehaviour
     // Move every set period of time, instead of every frame
     void FixedUpdate()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         pill.position += Vector3.up * speed;
 
         if (pill.position.y >= 10)
@@ -24,18 +30,24 @@ public class Pill : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    /* private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.tag == "Ghost")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            //    Increase player score??
+        }
+        else if (collision.tag == "Barricade")
+        {
+            //    Degrade barricade?? 
+            Destroy(gameObject);
+        }
+        else if (collision.tag == "Pacman")
+        {
+            //    Pacman lose a life?? 
+            Destroy(gameObject);
+        }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.tag == "Ghost")
-        //{
-        //   Debug.Log("Hit a ghost!");
-        //    Destroy(collision.gameObject);
-        //}
-    }
+    */
 }
