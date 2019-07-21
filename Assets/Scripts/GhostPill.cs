@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pill : MonoBehaviour
+public class GhostPill : MonoBehaviour
 {
-    private Transform pill;
+
+    private Transform ghostPill;
     float speed = 0.30f;
 
     // Start is called before the first frame update
     void Start()
     {
-        pill = GetComponent<Transform>();
+        ghostPill = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        pill.position += Vector3.up * speed;
+        ghostPill.position += Vector3.up * -speed;
 
-        if (pill.position.y >= 10)
+        if (ghostPill.position.y <= -10)
         {
             Destroy(gameObject);
         }
@@ -26,22 +27,20 @@ public class Pill : MonoBehaviour
 
     /* private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Ghost")
+        if (collision.tag == "Pacman")
         {
+            //    Pacman lose a life/cannon??
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            //    Increase player score??
+            
         }
         else if (collision.tag == "Barricade")
         {
             //    Degrade barricade?? 
             Destroy(gameObject);
         }
-        else if (collision.tag == "Pacman")
-        {
-            //    Pacman lose a life?? 
-            Destroy(gameObject);
-        }
+        
     }
     */
+    
 }
