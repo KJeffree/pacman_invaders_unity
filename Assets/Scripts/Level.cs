@@ -21,10 +21,6 @@ public class Level : MonoBehaviour
     void Update()
     {
         UpdateLivesText();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            LoseLife();
-        }
     }
 
     public void LoseLife()
