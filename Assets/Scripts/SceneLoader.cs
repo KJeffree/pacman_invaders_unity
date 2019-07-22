@@ -17,5 +17,14 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
+    public void LoadWinScene()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void LoadLoseScene()
+    {
+        SceneManager.LoadScene(2);
+    }
     
 }

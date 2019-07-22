@@ -8,6 +8,8 @@ public class Level : MonoBehaviour
 
     SceneLoader sceneLoader;
 
+    [SerializeField] int numberOfGhosts = 3;
+
     [SerializeField] int lives = 3;
 
     [SerializeField] TextMeshProUGUI livesText;
@@ -21,6 +23,24 @@ public class Level : MonoBehaviour
     void Update()
     {
         UpdateLivesText();
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            RemoveGhost();
+        }
+    }
+
+    public void CountGhosts()
+    {
+        numberOfGhosts++;
+    }
+
+    public void RemoveGhost()
+    {
+        numberOfGhosts--;
+        if (numberOfGhosts <= 0)
+        {
+            sceneLoader.LoadWinScene();
+        }
     }
 
     public void LoseLife()
@@ -28,7 +48,7 @@ public class Level : MonoBehaviour
         lives -= 1;
         if (lives <= 0)
         {
-            sceneLoader.LoadNextScene();
+            sceneLoader.LoadLoseScene();
         }
     }
 
