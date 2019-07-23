@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class Pill : MonoBehaviour
 {
-    private Transform pill;
-    float speed = 0.30f;
+    private Rigidbody2D pill;
+    float speed = 5.00f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        pill = GetComponent<Transform>();
+        pill = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        pill.position += Vector3.up * speed;
-
-        if (pill.position.y >= 10)
-        {
-            Destroy(gameObject);
-        }
+        pill.velocity = new Vector2(0, speed);
     }
 
-    /* private void OnTriggerEnter2D(Collider2D collision)
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ghost")
         {
@@ -37,11 +35,6 @@ public class Pill : MonoBehaviour
             //    Degrade barricade?? 
             Destroy(gameObject);
         }
-        else if (collision.tag == "Pacman")
-        {
-            //    Pacman lose a life?? 
-            Destroy(gameObject);
-        }
     }
-    */
+    
 }

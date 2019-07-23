@@ -4,28 +4,25 @@ using UnityEngine;
 
 public class GhostPill : MonoBehaviour
 {
+    private Rigidbody2D ghostPill;
+    float speed = 5.00f;
 
-    private Transform ghostPill;
-    float speed = 0.30f;
-
-    // Start is called before the first frame update
     void Start()
     {
-        ghostPill = GetComponent<Transform>();
+        ghostPill = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        ghostPill.position += Vector3.up * -speed;
-
-        if (ghostPill.position.y <= -10)
-        {
-            Destroy(gameObject);
-        }
+        ghostPill.velocity = new Vector2(0, -speed);
     }
 
-    /* private void OnTriggerEnter2D(Collider2D collision)
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Pacman")
         {
@@ -39,8 +36,6 @@ public class GhostPill : MonoBehaviour
             //    Degrade barricade?? 
             Destroy(gameObject);
         }
-        
     }
-    */
-    
+
 }
