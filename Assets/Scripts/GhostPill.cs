@@ -6,10 +6,12 @@ public class GhostPill : MonoBehaviour
 {
     private Rigidbody2D ghostPill;
     float speed = 5.00f;
+    Level level;
 
     void Start()
     {
         ghostPill = GetComponent<Rigidbody2D>();
+        level = FindObjectOfType<Level>();
     }
 
     void Update()
@@ -26,8 +28,7 @@ public class GhostPill : MonoBehaviour
     {
         if (collision.tag == "Pacman")
         {
-            //    Pacman lose a life/cannon??
-            Destroy(collision.gameObject);
+            level.LoseLife();
             Destroy(gameObject);
             
         }
