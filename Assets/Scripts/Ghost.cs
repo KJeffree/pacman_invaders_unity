@@ -49,5 +49,6 @@ public class Ghost : MonoBehaviour, ITouchWalls
     public void Die()
     {
         GhostHiveMind.RemoveGhost(this);
+        level.RemoveGhost();
     }
 }
