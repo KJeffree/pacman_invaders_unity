@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6814598296996512928}
   - component: {fileID: 8656186448311755033}
+  - component: {fileID: 550571286842142434}
   m_Layer: 0
-  m_Name: Untitled_77
+  m_Name: pinky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,3 +81,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &550571286842142434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314757573454014555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab5206a7d9b94c41b29f4b850f0d6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
