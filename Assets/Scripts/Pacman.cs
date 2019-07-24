@@ -17,7 +17,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
     void Update()
     {
         var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        if (BlockedByWall(deltaX)) return;
+        if (BlockedByWall(deltaX)) deltaX = 0;
         transform.Translate(deltaX, 0, 0);
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire)
