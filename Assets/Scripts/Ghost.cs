@@ -8,6 +8,9 @@ public class Ghost : MonoBehaviour, ITouchWalls
     float speed = 1.0f;
     Level level;
 
+    [SerializeField] GameObject ghostPill;
+    [SerializeField] Transform ghostPillSpawn;
+
     void Start()
     {
         GhostHiveMind.AddGhost(this);
@@ -24,6 +27,12 @@ public class Ghost : MonoBehaviour, ITouchWalls
             deltaX = -deltaX;
         }
         transform.Translate(deltaX, 0, 0);
+        GhostHiveMind.FirePill();
+    }
+
+    public void FirePill()
+    {
+        Instantiate(ghostPill, ghostPillSpawn.position, ghostPillSpawn.rotation);
     }
     public void ReverseDirection()
     {

@@ -6,6 +6,19 @@ public class GhostHiveMind : MonoBehaviour
 {
     private static List<Ghost> ghosts = new List<Ghost>();
     private static float lastWallHit = 0.0f;
+    static float fireDelay = 1;
+    static float nextFire = 1;
+
+    public static void FirePill()
+    {
+        if (Time.time > nextFire)
+        {
+            int randomIndex = Random.Range(0, ghosts.Count);
+            ghosts[randomIndex].FirePill();
+            nextFire = Time.time + fireDelay;    
+        }
+    }
+
 
     public static void HitWall()
     {

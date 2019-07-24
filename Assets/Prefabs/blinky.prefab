@@ -95,6 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab5206a7d9b94c41b29f4b850f0d6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostPill: {fileID: 5886033735981310057, guid: 8569113d3c197854ab5b740ad9275545,
+    type: 3}
+  ghostPillSpawn: {fileID: 3642123883580844315}
 --- !u!60 &-7136435736912035555
 PolygonCollider2D:
   m_ObjectHideFlags: 0
