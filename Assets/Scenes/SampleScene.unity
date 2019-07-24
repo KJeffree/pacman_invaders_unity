@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221b2010e505a4ef38d5c08bef1670ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfGhosts: 3
+  numberOfGhosts: 0
   lives: 3
   livesText: {fileID: 311599818}
 --- !u!1001 &764147607

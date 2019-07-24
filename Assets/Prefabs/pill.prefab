@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1653300945125475558}
   - component: {fileID: 8913548412183985697}
   - component: {fileID: 4737566207466112734}
+  - component: {fileID: -6763930207279085752}
   m_Layer: 0
   m_Name: pill
   m_TagString: Untagged
@@ -114,3 +115,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &-6763930207279085752
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184802872178169482}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

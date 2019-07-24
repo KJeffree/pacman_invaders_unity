@@ -5,6 +5,17 @@ using UnityEngine;
 public class GhostHiveMind : MonoBehaviour
 {
     private static List<Ghost> ghosts = new List<Ghost>();
+    private static float lastWallHit = 0.0f;
+
+    public static void HitWall()
+    {
+        float now = Time.time;
+        if (now - lastWallHit > 0.1f) {
+            ReverseDirection();
+            MoveDown();
+            lastWallHit = now;
+        }
+    }
 
     public static void ReverseDirection()
     {
@@ -26,4 +37,10 @@ public class GhostHiveMind : MonoBehaviour
     {
         ghosts.Add(newGhost);
     }
+
+    public static void RemoveGhost(Ghost newGhost)
+    {
+        ghosts.Remove(newGhost);
+    }
+
 }

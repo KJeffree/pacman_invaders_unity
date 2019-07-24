@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
 
     SceneLoader sceneLoader;
 
-    [SerializeField] int numberOfGhosts;
+    [SerializeField] int numberOfGhosts = 0;
 
     [SerializeField] int lives = 3;
 

@@ -26,6 +26,7 @@ public class Pill : MonoBehaviour
     {
         if (collision.tag == "Ghost")
         {
+            collision.gameObject.GetComponent<Ghost>().Die();
             Destroy(collision.gameObject);
             Destroy(gameObject);
             //    Increase player score??

@@ -6,10 +6,13 @@ public class Ghost : MonoBehaviour, ITouchWalls
 {
     bool movingRight = true;
     float speed = 1.0f;
+    Level level;
 
     void Start()
     {
         GhostHiveMind.AddGhost(this);
+        level = FindObjectOfType<Level>();
+        level.CountGhosts();
     }
 
     // Update is called once per frame
@@ -30,8 +33,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
     public void EnterWall(float xPos)
     {
         Debug.Log("Ghost entered wall");
-        GhostHiveMind.ReverseDirection();
-        GhostHiveMind.MoveDown();
+        GhostHiveMind.HitWall();
     }
 
     public void ExitWall()
@@ -42,5 +44,10 @@ public class Ghost : MonoBehaviour, ITouchWalls
     public void MoveDown()
     {
         transform.Translate(0, -0.3f, 0);
+    }
+
+    public void Die()
+    {
+        GhostHiveMind.RemoveGhost(this);
     }
 }
