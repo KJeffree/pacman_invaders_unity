@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
 
     SceneLoader sceneLoader;
 
-    [SerializeField] int numberOfGhosts = 3;
+    [SerializeField] int numberOfGhosts;
 
     [SerializeField] int lives = 3;
 
@@ -23,10 +23,6 @@ public class Level : MonoBehaviour
     void Update()
     {
         UpdateLivesText();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            RemoveGhost();
-        }
     }
 
     public void CountGhosts()
