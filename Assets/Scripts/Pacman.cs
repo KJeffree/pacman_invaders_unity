@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pacman : MonoBehaviour
+public class Pacman : MonoBehaviour, ITouchWalls
 {
     float speed = 10.00f;
     bool touchingLeftWall = false;

@@ -1,0 +1,46 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ghost : MonoBehaviour, ITouchWalls
+{
+    bool movingRight = true;
+    float speed = 1.0f;
+
+    void Start()
+    {
+        GhostHiveMind.AddGhost(this);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float deltaX = speed * Time.deltaTime;
+        if (!movingRight)
+        {
+            deltaX = -deltaX;
+        }
+        transform.Translate(deltaX, 0, 0);
+    }
+    public void ReverseDirection()
+    {
+        movingRight = !movingRight;
+    }
+
+    public void EnterWall(float xPos)
+    {
+        Debug.Log("Ghost entered wall");
+        GhostHiveMind.ReverseDirection();
+        GhostHiveMind.MoveDown();
+    }
+
+    public void ExitWall()
+    {
+        Debug.Log("Ghost exited wall");
+    }
+
+    public void MoveDown()
+    {
+        transform.Translate(0, -0.3f, 0);
+    }
+}

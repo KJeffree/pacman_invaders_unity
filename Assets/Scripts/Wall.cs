@@ -16,11 +16,12 @@ public class Wall : MonoBehaviour
     {
         var collisionX = collision.GetContact(0).point.x;
         Debug.Log("Wall collision enter at xPos: " + collisionX);
-        pacman.EnterWall(collisionX);
+        collision.gameObject.GetComponent<ITouchWalls>().EnterWall(collisionX);
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        pacman.ExitWall();
+        collision.gameObject.GetComponent<ITouchWalls>().ExitWall();
     }
 }
