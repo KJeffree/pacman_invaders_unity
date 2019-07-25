@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pill : MonoBehaviour
 {
     private Rigidbody2D pill;
+
     float speed = 5.00f;
 
     void Start()
@@ -35,6 +36,7 @@ public class Pill : MonoBehaviour
         {
             //    Degrade barricade?? 
             Destroy(gameObject);
+            collision.gameObject.GetComponent<Barricade>().DegradeBarricade();
         }
     }
     

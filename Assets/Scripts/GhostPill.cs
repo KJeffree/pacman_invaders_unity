@@ -36,6 +36,7 @@ public class GhostPill : MonoBehaviour
         {
             //    Degrade barricade?? 
             Destroy(gameObject);
+            collision.gameObject.GetComponent<Barricade>().DegradeBarricade();
         }
     }
 
