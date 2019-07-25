@@ -20,7 +20,7 @@ public class Barricade : MonoBehaviour
 
     public void DegradeBarricade()
     {
-        if (numberOfHits < 12){
+        if (numberOfHits < 6){
             gameObject.GetComponent<SpriteRenderer>().sprite = barricadeStates[numberOfHits];
             Destroy(GetComponent<BoxCollider2D>());
             gameObject.AddComponent<BoxCollider2D>();

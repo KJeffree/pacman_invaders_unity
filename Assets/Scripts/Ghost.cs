@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ghost : MonoBehaviour, ITouchWalls
 {
     bool movingRight = true;
-    float speed = 1.0f;
+    float speed = 0.5f;
     Level level;
 
     [SerializeField] GameObject ghostPill;

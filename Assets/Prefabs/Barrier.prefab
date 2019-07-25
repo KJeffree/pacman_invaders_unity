@@ -143,14 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barricadeStates:
   - {fileID: 21300000, guid: fd5ef70a05f044355a0b46ced422cfce, type: 3}
-  - {fileID: 21300000, guid: 2fc02aaba9f0845fe8de58b7c16599a1, type: 3}
   - {fileID: 21300000, guid: 27b6142de16224665af76fe1dffd589b, type: 3}
-  - {fileID: 21300000, guid: 57674c1c78ebd4e28a580eb4ed7808ec, type: 3}
   - {fileID: 21300000, guid: 7fd87218575314c41a0c59a44ebac273, type: 3}
-  - {fileID: 21300000, guid: ed41b1cea7f134e87b62e565f88fda6d, type: 3}
   - {fileID: 21300000, guid: 5f4590da1ce7844fa8e3cefe14df366f, type: 3}
-  - {fileID: 21300000, guid: 4b4f3000ba028472b91fb0b79a7b642e, type: 3}
   - {fileID: 21300000, guid: 8f5608bc7f6d249bab908b31463c6de7, type: 3}
-  - {fileID: 21300000, guid: 221c24c947bd94e02a5db3b8d06d58db, type: 3}
   - {fileID: 21300000, guid: d55cdf7b59ce34535a222eef801de2cd, type: 3}
-  - {fileID: 21300000, guid: 99103e1b3c4a04b9d99d274bad28df4c, type: 3}
