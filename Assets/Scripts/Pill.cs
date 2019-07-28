@@ -32,6 +32,13 @@ public class Pill : MonoBehaviour
             Destroy(gameObject);
             //    Increase player score??
         }
+        else if (collision.tag == "Bonus Ghost")
+        {
+            //collision.gameObject.GetComponent<BonusGhost>().Die();
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            //    Increase player score - bonus points??
+        }
         else if (collision.tag == "Barricade")
         {
             //    Degrade barricade?? 
