@@ -6,10 +6,14 @@ public class Wall : MonoBehaviour
 {
 
     Pacman pacman;
+    BonusGhost bonusGhost;
 
     void Start()
     {
         pacman = FindObjectOfType<Pacman>();
+        bonusGhost = FindObjectOfType<BonusGhost>();
+
+        Physics2D.IgnoreCollision(bonusGhost.GetComponent<Collider2D>(), GetComponent<BoxCollider2D>());
     }
 
     void OnCollisionEnter2D(Collision2D collision)
