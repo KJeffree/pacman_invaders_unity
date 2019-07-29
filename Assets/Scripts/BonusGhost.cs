@@ -5,7 +5,7 @@ using UnityEngine;
 public class BonusGhost : MonoBehaviour
 {
     private Rigidbody2D bonusGhost;
-    float speed = 5.00f;
+    public float speed;
 
     Wall wall;
 
@@ -14,19 +14,30 @@ public class BonusGhost : MonoBehaviour
         bonusGhost = GetComponent<Rigidbody2D>();
         wall = FindObjectOfType<Wall>();
 
-        Physics2D.IgnoreCollision(wall.GetComponent<BoxCollider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(wall.GetComponent<BoxCollider2D>(), GetComponent<Collider2D>(), true);
     }
 
 
     void Update()
     {
-        bonusGhost.velocity = new Vector2(-speed, 0);
+        bonusGhost.velocity = new Vector2(speed, 0);
+
+        if (bonusGhost.position.x >= 14.0 || bonusGhost.position.x <= -2.0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void OnBecameInvisible()
+    public void setSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    // Not working with current camera aspect
+    /* private void OnBecameInvisible()
     {
         Destroy(gameObject);
-    }
+    } */
 
     
 }

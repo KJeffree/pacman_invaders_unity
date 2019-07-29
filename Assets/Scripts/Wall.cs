@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-
     Pacman pacman;
     BonusGhost bonusGhost;
 
@@ -12,16 +11,13 @@ public class Wall : MonoBehaviour
     {
         pacman = FindObjectOfType<Pacman>();
         bonusGhost = FindObjectOfType<BonusGhost>();
-
-        Physics2D.IgnoreCollision(bonusGhost.GetComponent<Collider2D>(), GetComponent<BoxCollider2D>());
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         var collisionX = collision.GetContact(0).point.x;
         Debug.Log("Wall collision enter at xPos: " + collisionX);
-        collision.gameObject.GetComponent<ITouchWalls>().EnterWall(collisionX);
-
+        collision.gameObject.GetComponent<ITouchWalls>().EnterWall(collisionX); 
     }
 
     void OnCollisionExit2D(Collision2D collision)

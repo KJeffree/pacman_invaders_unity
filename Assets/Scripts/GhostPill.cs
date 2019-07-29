@@ -17,12 +17,18 @@ public class GhostPill : MonoBehaviour
     void Update()
     {
         ghostPill.velocity = new Vector2(0, -speed);
+
+        if (ghostPill.position.y <= -1.0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void OnBecameInvisible()
+    // Not working with current camera aspect
+    /* private void OnBecameInvisible()
     {
         Destroy(gameObject);
-    }
+    } */
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

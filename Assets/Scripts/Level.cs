@@ -13,13 +13,20 @@ public class Level : MonoBehaviour
     [SerializeField] int lives = 3;
 
     [SerializeField] TextMeshProUGUI livesText;
-    // Start is called before the first frame update
+
+    public BonusGhost bonusGhost;
+    float spawnTime = 15;
+    Vector2 spawnPoint;
+
+
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
+
+        InvokeRepeating("addBonusGhost", 0, spawnTime);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         UpdateLivesText();
@@ -51,5 +58,23 @@ public class Level : MonoBehaviour
     private void UpdateLivesText()
     {
         livesText.text = lives.ToString();
+    }
+
+    private void addBonusGhost()
+    {
+        var spawnPointLeft = new Vector2(-1.39f, 9.32f);
+        var spawnPointRight = new Vector2(13.39f, 9.32f);
+
+        if (Random.Range(0, 2) == 0)
+        {
+            spawnPoint = spawnPointLeft;
+            bonusGhost.speed = 2.0f;
+        } else
+        {
+            spawnPoint = spawnPointRight;
+            bonusGhost.speed = -2.0f;
+        }
+
+        Instantiate(bonusGhost, spawnPoint, Quaternion.identity);
     }
 }

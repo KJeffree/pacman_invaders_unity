@@ -16,12 +16,18 @@ public class Pill : MonoBehaviour
     void Update()
     {
         pill.velocity = new Vector2(0, speed);
+
+        if (pill.position.y >= 11.0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void OnBecameInvisible()
+    // Not working with current camera aspect
+    /* private void OnBecameInvisible()
     {
         Destroy(gameObject);
-    }
+    } */
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
