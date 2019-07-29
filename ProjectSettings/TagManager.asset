@@ -7,6 +7,7 @@ TagManager:
   - Ghost
   - Pacman
   - Barricade
+  - Bonus Ghost
   layers:
   - Default
   - TransparentFX

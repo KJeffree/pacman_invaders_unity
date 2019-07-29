@@ -1532,6 +1532,8 @@ MonoBehaviour:
   numberOfGhosts: 0
   lives: 3
   livesText: {fileID: 311599818}
+  bonusGhost: {fileID: 7749230955786626991, guid: 312f3ec62d00a4f41b7f75ee6c24af52,
+    type: 3}
 --- !u!1001 &764147607
 PrefabInstance:
   m_ObjectHideFlags: 0
