@@ -12,6 +12,10 @@ public class Level : MonoBehaviour
 
     [SerializeField] int lives = 3;
 
+    [SerializeField] int score = 0;
+
+    [SerializeField] TextMeshProUGUI scoreText;
+
     [SerializeField] TextMeshProUGUI livesText;
 
     public BonusGhost bonusGhost;
@@ -29,7 +33,7 @@ public class Level : MonoBehaviour
 
     void Update()
     {
-        UpdateLivesText();
+        UpdateLivesAndScoreText();
     }
 
     public void CountGhosts()
@@ -55,9 +59,15 @@ public class Level : MonoBehaviour
         }
     }
 
-    private void UpdateLivesText()
+    private void UpdateLivesAndScoreText()
     {
         livesText.text = lives.ToString();
+        scoreText.text = score.ToString();
+    }
+
+    public void UpdateScoreGhost()
+    {
+        score += 20;
     }
 
     private void addBonusGhost()
