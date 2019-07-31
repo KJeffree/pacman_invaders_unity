@@ -18,22 +18,45 @@ public class Level : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI livesText;
 
+    [SerializeField] TextMeshProUGUI finalScoreText;
+
     public BonusGhost bonusGhost;
     float spawnTime = 15;
     Vector2 spawnPoint;
 
+    private void Awake()
+    {
+        int levelCount = FindObjectsOfType<Level>().Length;
+        if (levelCount > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else 
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
 
         InvokeRepeating("addBonusGhost", 0, spawnTime);
+
+        if (finalScoreText)
+        {
+            finalScoreText.text = "Final Score: " + score.ToString();
+        }
     }
 
 
     void Update()
     {
-        UpdateLivesAndScoreText();
+        if (scoreText && livesText)
+        {
+            UpdateLivesAndScoreText();
+        }
     }
 
     public void CountGhosts()
