@@ -70,6 +70,11 @@ public class Level : MonoBehaviour
         score += 20;
     }
 
+    public void UpdateScoreBonusGhost()
+    {
+        score += 100;
+    }
+
     private void addBonusGhost()
     {
         var spawnPointLeft = new Vector2(-1.39f, 9.32f);

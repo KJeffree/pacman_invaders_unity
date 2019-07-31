@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pill : MonoBehaviour
 {
+    private Level level;
     private Rigidbody2D pill;
 
     float speed = 5.00f;
@@ -11,6 +12,7 @@ public class Pill : MonoBehaviour
     void Start()
     {
         pill = GetComponent<Rigidbody2D>();
+        level = FindObjectOfType<Level>();
     }
 
     void Update()
@@ -36,6 +38,7 @@ public class Pill : MonoBehaviour
             collision.gameObject.GetComponent<Ghost>().Die();
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            level.UpdateScoreGhost();
             //    Increase player score??
         }
         else if (collision.tag == "Bonus Ghost")
@@ -43,6 +46,7 @@ public class Pill : MonoBehaviour
             //collision.gameObject.GetComponent<BonusGhost>().Die();
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            level.UpdateScoreBonusGhost();
             //    Increase player score - bonus points??
         }
         else if (collision.tag == "Barricade")

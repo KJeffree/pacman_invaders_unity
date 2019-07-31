@@ -59,6 +59,5 @@ public class Ghost : MonoBehaviour, ITouchWalls
     {
         GhostHiveMind.RemoveGhost(this);
         level.RemoveGhost();
-        level.UpdateScoreGhost();
     }
 }
