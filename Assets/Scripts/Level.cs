@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class Level : MonoBehaviour
 {
@@ -18,8 +20,6 @@ public class Level : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI livesText;
 
-    [SerializeField] TextMeshProUGUI finalScoreText;
-
     public BonusGhost bonusGhost;
     float spawnTime = 15;
     Vector2 spawnPoint;
@@ -27,6 +27,7 @@ public class Level : MonoBehaviour
     private void Awake()
     {
         int levelCount = FindObjectsOfType<Level>().Length;
+        Debug.Log(levelCount);
         if (levelCount > 1)
         {
             gameObject.SetActive(false);
@@ -44,19 +45,16 @@ public class Level : MonoBehaviour
 
         InvokeRepeating("addBonusGhost", 0, spawnTime);
 
-        if (finalScoreText)
-        {
-            finalScoreText.text = "Final Score: " + score.ToString();
-        }
     }
 
+    public int GetEndScore()
+    {
+        return score;
+    }
 
     void Update()
     {
-        if (scoreText && livesText)
-        {
-            UpdateLivesAndScoreText();
-        }
+        UpdateLivesAndScoreText();
     }
 
     public void CountGhosts()
@@ -84,6 +82,7 @@ public class Level : MonoBehaviour
 
     private void UpdateLivesAndScoreText()
     {
+        Debug.Log(score);
         livesText.text = lives.ToString();
         scoreText.text = score.ToString();
     }
@@ -96,6 +95,12 @@ public class Level : MonoBehaviour
     public void UpdateScoreBonusGhost()
     {
         score += 100;
+    }
+
+    public void RemoveTextScoreAndLives()
+    {
+        Destroy(livesText);
+        Destroy(scoreText);
     }
 
     private void addBonusGhost()
