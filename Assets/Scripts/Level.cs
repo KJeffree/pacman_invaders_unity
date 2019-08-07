@@ -54,6 +54,7 @@ public class Level : MonoBehaviour
 
     void Update()
     {
+        if (livesText && scoreText)
         UpdateLivesAndScoreText();
     }
 
