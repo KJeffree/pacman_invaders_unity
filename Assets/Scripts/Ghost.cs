@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ghost : MonoBehaviour, ITouchWalls
 {
     bool movingRight = true;
-    float speed = 0.5f;
+    [SerializeField] float speed = 0.5f;
     Level level;
 
     [SerializeField] GameObject ghostPill;
@@ -28,6 +28,11 @@ public class Ghost : MonoBehaviour, ITouchWalls
         }
         transform.Translate(deltaX, 0, 0);
         GhostHiveMind.FirePill();
+    }
+
+    public void IncreaseSpeed()
+    {
+        speed += 0.1f;
     }
 
     public void FirePill()

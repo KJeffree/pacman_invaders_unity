@@ -24,9 +24,13 @@ public class Level : MonoBehaviour
     float spawnTime = 15;
     Vector2 spawnPoint;
 
-    [SerializeField] GameObject ghosts;
+    [SerializeField] Ghost[] ghosts;
+
+    [SerializeField] GameObject ghostsPrefab;
 
     [SerializeField] Transform ghostsSpwan;
+
+    int wave = 0;
 
     private void Awake()
     {
@@ -49,6 +53,8 @@ public class Level : MonoBehaviour
 
         InvokeRepeating("addBonusGhost", 0, spawnTime);
 
+        ghosts = FindObjectsOfType<Ghost>();
+
     }
 
     public int GetEndScore()
@@ -64,6 +70,11 @@ public class Level : MonoBehaviour
         }
     }
 
+    public void ResetGame()
+    {
+        Destroy(gameObject);
+    }
+
     public void CountGhosts()
     {
         numberOfGhosts++;
@@ -76,6 +87,22 @@ public class Level : MonoBehaviour
         if (numberOfGhosts <= 0)
         {
             NextGhostWave();
+            ghosts = FindObjectsOfType<Ghost>();
+            wave += 1;
+            IncreaseGhostSpeed();
+        }
+    }
+
+    private void IncreaseGhostSpeed()
+    {
+        int x = 0;
+        while (x < wave)
+        {
+            foreach (var ghost in ghosts)
+            {
+                ghost.IncreaseSpeed();
+            }
+            x++;
         }
     }
 
@@ -90,7 +117,7 @@ public class Level : MonoBehaviour
 
      private void NextGhostWave()
     {
-        Instantiate(ghosts, ghostsSpwan.position, ghostsSpwan.rotation);
+        Instantiate(ghostsPrefab, ghostsSpwan.position, ghostsSpwan.rotation);
     }
 
     private void UpdateLivesAndScoreText()
