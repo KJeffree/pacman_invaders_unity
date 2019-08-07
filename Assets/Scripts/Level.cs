@@ -24,6 +24,10 @@ public class Level : MonoBehaviour
     float spawnTime = 15;
     Vector2 spawnPoint;
 
+    [SerializeField] GameObject ghosts;
+
+    [SerializeField] Transform ghostsSpwan;
+
     private void Awake()
     {
         int levelCount = FindObjectsOfType<Level>().Length;
@@ -55,7 +59,9 @@ public class Level : MonoBehaviour
     void Update()
     {
         if (livesText && scoreText)
-        UpdateLivesAndScoreText();
+        {
+            UpdateLivesAndScoreText();
+        }
     }
 
     public void CountGhosts()
@@ -65,10 +71,11 @@ public class Level : MonoBehaviour
 
     public void RemoveGhost()
     {
+        Debug.Log("remove ghost called");
         numberOfGhosts--;
         if (numberOfGhosts <= 0)
         {
-            sceneLoader.LoadWinScene();
+            NextGhostWave();
         }
     }
 
@@ -79,6 +86,11 @@ public class Level : MonoBehaviour
         {
             sceneLoader.LoadLoseScene();
         }
+    }
+
+     private void NextGhostWave()
+    {
+        Instantiate(ghosts, ghostsSpwan.position, ghostsSpwan.rotation);
     }
 
     private void UpdateLivesAndScoreText()
