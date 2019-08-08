@@ -14,7 +14,7 @@ public class BonusGhost : MonoBehaviour
         bonusGhost = GetComponent<Rigidbody2D>();
         wall = FindObjectOfType<Wall>();
 
-        Physics2D.IgnoreCollision(wall.GetComponent<BoxCollider2D>(), GetComponent<Collider2D>(), true);
+        Physics2D.IgnoreCollision(wall.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>(), true);
     }
 
 
