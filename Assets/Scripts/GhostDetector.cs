@@ -20,8 +20,6 @@ public class GhostDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("collided");
-        Debug.Log(collider);
         if (collider.tag == "Ghost")
         {
             sceneLoader.LoadLoseScene();

@@ -16,7 +16,6 @@ public class Wall : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         var collisionX = collision.GetContact(0).point.x;
-        Debug.Log("Wall collision enter at xPos: " + collisionX);
         collision.gameObject.GetComponent<ITouchWalls>().EnterWall(collisionX); 
     }
 

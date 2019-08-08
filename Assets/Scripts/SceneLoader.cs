@@ -31,7 +31,6 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         FindObjectOfType<Level>().ResetGame();
-
     }
 
     public void QuitGame()

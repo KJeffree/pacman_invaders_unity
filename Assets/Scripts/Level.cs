@@ -35,7 +35,6 @@ public class Level : MonoBehaviour
     private void Awake()
     {
         int levelCount = FindObjectsOfType<Level>().Length;
-        Debug.Log(levelCount);
         if (levelCount > 1)
         {
             gameObject.SetActive(false);
@@ -82,7 +81,6 @@ public class Level : MonoBehaviour
 
     public void RemoveGhost()
     {
-        Debug.Log("remove ghost called");
         numberOfGhosts--;
         if (numberOfGhosts <= 0)
         {
@@ -122,7 +120,6 @@ public class Level : MonoBehaviour
 
     private void UpdateLivesAndScoreText()
     {
-        Debug.Log(score);
         livesText.text = lives.ToString();
         scoreText.text = score.ToString();
     }

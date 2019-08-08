@@ -11,9 +11,12 @@ public class Ghost : MonoBehaviour, ITouchWalls
     [SerializeField] GameObject ghostPill;
     [SerializeField] Transform ghostPillSpawn;
 
+    GhostHiveMind ghostHiveMind;
+
     void Start()
     {
-        GhostHiveMind.AddGhost(this);
+        ghostHiveMind = FindObjectOfType<GhostHiveMind>();
+        ghostHiveMind.AddGhost(this);
         level = FindObjectOfType<Level>();
         level.CountGhosts();
     }
@@ -27,7 +30,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
             deltaX = -deltaX;
         }
         transform.Translate(deltaX, 0, 0);
-        GhostHiveMind.FirePill();
+        ghostHiveMind.FirePill();
     }
 
     public void IncreaseSpeed()
@@ -46,13 +49,16 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     public void EnterWall(float xPos)
     {
-        Debug.Log("Ghost entered wall");
-        GhostHiveMind.HitWall();
+        ghostHiveMind.HitWall();
     }
 
     public void ExitWall()
     {
-        Debug.Log("Ghost exited wall");
+    }
+
+    public void ResetGame()
+    {
+        Destroy(gameObject);
     }
 
     public void MoveDown()
@@ -62,7 +68,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     public void Die()
     {
-        GhostHiveMind.RemoveGhost(this);
+        ghostHiveMind.RemoveGhost(this);
         level.RemoveGhost();
     }
 }

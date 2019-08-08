@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GhostHiveMind : MonoBehaviour
 {
-    private static List<Ghost> ghosts = new List<Ghost>();
+    public List<Ghost> ghosts = new List<Ghost>();
     private static float lastWallHit = 0.0f;
     static float fireDelay = 1;
     static float nextFire = 1;
 
-    public static void FirePill()
+    public void FirePill()
     {
         if (Time.time > nextFire)
         {
@@ -20,7 +20,7 @@ public class GhostHiveMind : MonoBehaviour
     }
 
 
-    public static void HitWall()
+    public void HitWall()
     {
         float now = Time.time;
         if (now - lastWallHit > 0.1f) {
@@ -30,7 +30,12 @@ public class GhostHiveMind : MonoBehaviour
         }
     }
 
-    public static void ReverseDirection()
+    public void ResetGame()
+    {
+        Destroy(gameObject);
+    }
+
+    public void ReverseDirection()
     {
         foreach (Ghost ghost in ghosts)
         {
@@ -38,7 +43,7 @@ public class GhostHiveMind : MonoBehaviour
         }
     }
 
-    public static void MoveDown()
+    public void MoveDown()
     {
         foreach (Ghost ghost in ghosts)
         {
@@ -46,13 +51,15 @@ public class GhostHiveMind : MonoBehaviour
         }
     }
 
-    public static void AddGhost(Ghost newGhost)
+    public void AddGhost(Ghost newGhost)
     {
+        Debug.Log("added ghost");
         ghosts.Add(newGhost);
     }
 
-    public static void RemoveGhost(Ghost newGhost)
+    public void RemoveGhost(Ghost newGhost)
     {
+        Debug.Log("ghost removed");
         ghosts.Remove(newGhost);
     }
 
