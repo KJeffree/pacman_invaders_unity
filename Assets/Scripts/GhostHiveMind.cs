@@ -53,13 +53,11 @@ public class GhostHiveMind : MonoBehaviour
 
     public void AddGhost(Ghost newGhost)
     {
-        Debug.Log("added ghost");
         ghosts.Add(newGhost);
     }
 
     public void RemoveGhost(Ghost newGhost)
     {
-        Debug.Log("ghost removed");
         ghosts.Remove(newGhost);
     }
 

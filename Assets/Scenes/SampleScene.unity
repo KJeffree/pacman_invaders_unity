@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e766af4a40085d044a84c6d7dd8f666d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghosts: []
 --- !u!1001 &1111890011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -853,6 +854,9 @@ MonoBehaviour:
   pill: {fileID: 4184802872178169482, guid: 140f74624d431244c98deeac33758797, type: 3}
   pillSpawn: {fileID: 4155435085491768996}
   fireRate: 0.2
+  pacmanSprites:
+  - {fileID: 8730462044804939659, guid: 8352eb065ec5d4778a84baae5bb0bae4, type: 3}
+  - {fileID: -6731232699169143452, guid: 8352eb065ec5d4778a84baae5bb0bae4, type: 3}
 --- !u!60 &1123130021076007326
 PolygonCollider2D:
   m_ObjectHideFlags: 0

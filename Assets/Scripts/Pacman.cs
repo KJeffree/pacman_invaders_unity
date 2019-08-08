@@ -11,6 +11,8 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public float fireRate;
     private float nextFire;
 
+    [SerializeField] Sprite[] pacmanSprites;
+    float animationTimout;
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
 
@@ -22,8 +24,15 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire)
         {
+            GetComponent<SpriteRenderer>().sprite = pacmanSprites[1];
             nextFire = Time.time + fireRate;
             Instantiate(pill, pillSpawn.position, pillSpawn.rotation);
+            animationTimout = Time.time + 0.15f;
+        }
+
+        if (Time.time > animationTimout)
+        {
+            GetComponent<SpriteRenderer>().sprite = pacmanSprites[0];
         }
     }
 
