@@ -45,6 +45,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
     public void ReverseDirection()
     {
         movingRight = !movingRight;
+        speed += 0.01f;
     }
 
     public void EnterWall(float xPos)

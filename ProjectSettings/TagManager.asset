@@ -8,6 +8,7 @@ TagManager:
   - Pacman
   - Barricade
   - Bonus Ghost
+  - Pill
   layers:
   - Default
   - TransparentFX
