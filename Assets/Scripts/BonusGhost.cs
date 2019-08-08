@@ -34,10 +34,10 @@ public class BonusGhost : MonoBehaviour
     }
 
     // Not working with current camera aspect
-    /* private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    } */
+    // private void OnBecameInvisible()
+    // {
+    //     Destroy(gameObject);
+    // }
 
     
 }

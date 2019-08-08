@@ -49,7 +49,7 @@ public class Level : MonoBehaviour
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
-
+    
         InvokeRepeating("addBonusGhost", 0, spawnTime);
 
         ghosts = FindObjectsOfType<Ghost>();
@@ -66,6 +66,11 @@ public class Level : MonoBehaviour
         if (livesText && scoreText)
         {
             UpdateLivesAndScoreText();
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            CancelInvoke();
         }
     }
 
