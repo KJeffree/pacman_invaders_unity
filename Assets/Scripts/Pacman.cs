@@ -37,7 +37,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
             animationTimout = Time.time + 0.15f;
         }
 
-        if (Time.time > animationTimout)
+        if (Time.time > animationTimout && animator.GetInteger("Action") != 2)
         {
             animator.SetInteger("Action", 0);
         }
