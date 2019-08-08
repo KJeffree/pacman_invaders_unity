@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 550571286842142434}
   - component: {fileID: 7741462430659404191}
   - component: {fileID: 4620847235016742784}
+  - component: {fileID: 3487406675735097350}
   m_Layer: 0
   m_Name: pinky
   m_TagString: Ghost
@@ -95,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab5206a7d9b94c41b29f4b850f0d6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.5
   ghostPill: {fileID: 5886033735981310057, guid: 8569113d3c197854ab5b740ad9275545,
     type: 3}
   ghostPillSpawn: {fileID: 6814598296996512928}
@@ -151,3 +153,22 @@ PolygonCollider2D:
       - {x: -0.24, y: -0.32}
       - {x: 0.32, y: -0.32}
       - {x: 0.32, y: 0.19999999}
+--- !u!95 &3487406675735097350
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314757573454014555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b4aeba825b70484d8474baa377690ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

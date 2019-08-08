@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7749230955786626991}
   - component: {fileID: 8729830067578860516}
   - component: {fileID: 2475639894572012709}
+  - component: {fileID: 6379022657787144508}
   m_Layer: 0
   m_Name: bonus_ghost
   m_TagString: Bonus Ghost
@@ -148,3 +149,22 @@ PolygonCollider2D:
       - {x: 0.32, y: -0.32}
       - {x: 0.32, y: 0.12}
       - {x: 0.19999999, y: 0.32}
+--- !u!95 &6379022657787144508
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050533142966867902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59d6f671df7404cc4a8cf94fc55b104f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
