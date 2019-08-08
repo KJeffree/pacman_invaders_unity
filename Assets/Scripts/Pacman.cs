@@ -10,11 +10,18 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public Transform pillSpawn;
     public float fireRate;
     private float nextFire;
+    private Level level;
+    private Animator animator;
 
     [SerializeField] Sprite[] pacmanSprites;
     float animationTimout;
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
+
+    void Start()
+    {
+        animator = this.GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -24,7 +31,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire)
         {
-            GetComponent<SpriteRenderer>().sprite = pacmanSprites[1];
+            animator.SetInteger("Action", 1);
             nextFire = Time.time + fireRate;
             Instantiate(pill, pillSpawn.position, pillSpawn.rotation);
             animationTimout = Time.time + 0.15f;
@@ -32,8 +39,13 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
         if (Time.time > animationTimout)
         {
-            GetComponent<SpriteRenderer>().sprite = pacmanSprites[0];
+            animator.SetInteger("Action", 0);
         }
+    }
+
+    public void Die()
+    {
+        animator.SetInteger("Action", 2);
     }
 
     private bool BlockedByWall(float deltaX)

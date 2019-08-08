@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+
+    [SerializeField] float delayInSeconds = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,13 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadLoseScene()
     {
+        StartCoroutine(WaitAndLoad());
+        
+    }
+
+    IEnumerator WaitAndLoad()
+    {
+        yield return new WaitForSeconds(delayInSeconds);
         SceneManager.LoadScene(2);
     }
 

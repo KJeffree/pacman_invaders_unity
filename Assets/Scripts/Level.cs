@@ -114,6 +114,7 @@ public class Level : MonoBehaviour
         lives -= 1;
         if (lives <= 0)
         {
+            FindObjectOfType<Pacman>().Die();
             sceneLoader.LoadLoseScene();
         }
     }
