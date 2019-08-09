@@ -39,7 +39,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
             nextFire = Time.time + fireRate;
             Instantiate(pill, pillSpawn.position, pillSpawn.rotation);
             animationTimout = Time.time + 0.15f;
-            // AudioSource.PlayClipAtPoint(shootPill, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(shootPill, Camera.main.transform.position);
         }
 
         if (Time.time > animationTimout && animator.GetInteger("Action") != 2)

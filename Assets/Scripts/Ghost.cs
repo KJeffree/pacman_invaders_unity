@@ -85,6 +85,6 @@ public class Ghost : MonoBehaviour, ITouchWalls
     {
         ghostHiveMind.RemoveGhost(this);
         level.RemoveGhost();
-        AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
+        // AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
     }
 }
