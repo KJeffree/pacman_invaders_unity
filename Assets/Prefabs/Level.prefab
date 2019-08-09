@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startGame: {fileID: 8300000, guid: 848a65d3f2d8749d69683fb7710bc6d2, type: 3}
+  newWave: {fileID: 8300000, guid: b3d782021da1f40e3bf67e29238507b9, type: 3}
   numberOfGhosts: 0
   lives: 3
   score: 0

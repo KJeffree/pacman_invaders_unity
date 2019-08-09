@@ -11,6 +11,8 @@ public class Level : MonoBehaviour
     SceneLoader sceneLoader;
     [SerializeField] AudioClip startGame;
 
+    [SerializeField] AudioClip newWave;
+
     [SerializeField] int numberOfGhosts = 0;
 
     [SerializeField] int lives = 3;
@@ -134,6 +136,8 @@ public class Level : MonoBehaviour
         Vector3 startPosition= new Vector3(0.0f, 5.5f, 0.0f);
         ghostObject = Instantiate(ghostsPrefab, startPosition, ghostsSpwan.rotation);
         StartCoroutine(MoveToPosition(ghostObject.GetComponent<Transform>(), new Vector3(0.0f, 0.0f, 0.0f), 4));
+        AudioSource.PlayClipAtPoint(newWave, Camera.main.transform.position);
+
     }
 
     public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
