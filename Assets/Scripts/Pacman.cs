@@ -24,10 +24,22 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     void Start()
     {
+        StartCoroutine(WaitAndLoad());
         animator = this.GetComponent<Animator>();
     }
 
+    IEnumerator WaitAndLoad()
+    {
+        yield return new WaitForSeconds(4);
+        InvokeRepeating("PacmanBehaviour", 0, 0.02f);
+    }
+
     void Update()
+    {
+        
+    }
+
+    private void PacmanBehaviour()
     {
         var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         if (BlockedByWall(deltaX)) deltaX = 0;

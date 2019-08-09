@@ -13,14 +13,21 @@ public class BonusGhost : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(WaitAndLoad());        
         bonusGhost = GetComponent<Rigidbody2D>();
         wall = FindObjectOfType<Wall>();
 
         Physics2D.IgnoreCollision(wall.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>(), true);
     }
 
+    IEnumerator WaitAndLoad()
+    {
+        yield return new WaitForSeconds(4);
+        InvokeRepeating("BonusGhostMovement", 0, 0.02f);
+    }
 
-    void Update()
+
+    private void BonusGhostMovement()
     {
         bonusGhost.velocity = new Vector2(speed, 0);
 
