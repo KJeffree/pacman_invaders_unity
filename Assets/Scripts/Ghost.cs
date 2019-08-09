@@ -15,14 +15,26 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     void Start()
     {
+        StartCoroutine(WaitAndLoad());
         ghostHiveMind = FindObjectOfType<GhostHiveMind>();
         ghostHiveMind.AddGhost(this);
         level = FindObjectOfType<Level>();
         level.CountGhosts();
     }
 
+    IEnumerator WaitAndLoad()
+    {
+        yield return new WaitForSeconds(4);
+        InvokeRepeating("ghostMovement", 0, 0.02f);
+    }
+
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    private void ghostMovement()
     {
         float deltaX = speed * Time.deltaTime;
         if (!movingRight)

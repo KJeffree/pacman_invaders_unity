@@ -47,6 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5713858057711575287}
   - component: {fileID: 5397233798349666982}
+  - component: {fileID: 847222511}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -81,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221b2010e505a4ef38d5c08bef1670ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startGame: {fileID: 8300000, guid: 848a65d3f2d8749d69683fb7710bc6d2, type: 3}
   numberOfGhosts: 0
   lives: 3
   score: 0
@@ -88,6 +90,24 @@ MonoBehaviour:
   livesText: {fileID: 7588114931365659179}
   bonusGhost: {fileID: 7749230955786626991, guid: 312f3ec62d00a4f41b7f75ee6c24af52,
     type: 3}
+  ghosts: []
+  ghostsPrefab: {fileID: 8976824255749286228, guid: 3f3a7ad76663847e08a8d03ed467046a,
+    type: 3}
+  ghostsSpwan: {fileID: 7950214034470365795, guid: 3f3a7ad76663847e08a8d03ed467046a,
+    type: 3}
+--- !u!114 &847222511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4455372306340379080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e766af4a40085d044a84c6d7dd8f666d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghosts: []
 --- !u!1 &7588114931365659177
 GameObject:
   m_ObjectHideFlags: 0

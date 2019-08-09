@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
 {
 
     SceneLoader sceneLoader;
+    [SerializeField] AudioClip startGame;
 
     [SerializeField] int numberOfGhosts = 0;
 
@@ -29,6 +30,8 @@ public class Level : MonoBehaviour
     [SerializeField] GameObject ghostsPrefab;
 
     [SerializeField] Transform ghostsSpwan;
+
+    GameObject ghostObject;
 
     int wave = 0;
 
@@ -54,11 +57,18 @@ public class Level : MonoBehaviour
 
         ghosts = FindObjectsOfType<Ghost>();
 
+        AudioSource.PlayClipAtPoint(startGame, Camera.main.transform.position);
+
     }
 
     public int GetEndScore()
     {
         return score;
+    }
+
+    public int GetWaveNumber()
+    {
+        return wave;
     }
 
     void Update()
@@ -121,7 +131,21 @@ public class Level : MonoBehaviour
 
      private void NextGhostWave()
     {
-        Instantiate(ghostsPrefab, ghostsSpwan.position, ghostsSpwan.rotation);
+        Vector3 startPosition= new Vector3(0.0f, 5.5f, 0.0f);
+        ghostObject = Instantiate(ghostsPrefab, startPosition, ghostsSpwan.rotation);
+        StartCoroutine(MoveToPosition(ghostObject.GetComponent<Transform>(), new Vector3(0.0f, 0.0f, 0.0f), 4));
+    }
+
+    public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
+    {
+        var currentPos = transform.position;
+        var t = 0f;
+        while(t < 1)
+        {
+            t += Time.deltaTime / timeToMove;
+            transform.position = Vector3.Lerp(currentPos, position, t);
+            yield return null;
+        }
     }
 
     private void UpdateLivesAndScoreText()
