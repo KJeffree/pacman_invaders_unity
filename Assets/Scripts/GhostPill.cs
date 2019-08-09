@@ -36,7 +36,10 @@ public class GhostPill : MonoBehaviour
         {
             level.LoseLife();
             Destroy(gameObject);
-            
+            if (level.GetLives() >= 1)
+            {
+                collision.gameObject.GetComponent<Pacman>().HitByPill();
+            }
         }
         else if (collision.tag == "Barricade")
         {

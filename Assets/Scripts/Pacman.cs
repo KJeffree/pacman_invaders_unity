@@ -8,6 +8,8 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     [SerializeField] AudioClip pacmanDie;
 
+    [SerializeField] AudioClip pacmanHit;
+
     public GameObject pill;
     public Transform pillSpawn;
     public float fireRate;
@@ -64,6 +66,11 @@ public class Pacman : MonoBehaviour, ITouchWalls
     {
         animator.SetInteger("Action", 2);
         AudioSource.PlayClipAtPoint(pacmanDie, Camera.main.transform.position);
+    }
+
+    public void HitByPill()
+    {
+        AudioSource.PlayClipAtPoint(pacmanHit, Camera.main.transform.position);
     }
 
     private bool BlockedByWall(float deltaX)

@@ -68,6 +68,11 @@ public class Level : MonoBehaviour
         return score;
     }
 
+    public int GetLives()
+    {
+        return lives;
+    }
+
     public int GetWaveNumber()
     {
         return wave;
