@@ -6,6 +6,8 @@ public class Pacman : MonoBehaviour, ITouchWalls
 {
     float speed = 10.00f;
 
+    [SerializeField] AudioClip pacmanDie;
+
     public GameObject pill;
     public Transform pillSpawn;
     public float fireRate;
@@ -17,6 +19,8 @@ public class Pacman : MonoBehaviour, ITouchWalls
     float animationTimout;
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
+
+    [SerializeField] AudioClip shootPill;
 
     void Start()
     {
@@ -35,6 +39,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
             nextFire = Time.time + fireRate;
             Instantiate(pill, pillSpawn.position, pillSpawn.rotation);
             animationTimout = Time.time + 0.15f;
+            // AudioSource.PlayClipAtPoint(shootPill, Camera.main.transform.position);
         }
 
         if (Time.time > animationTimout && animator.GetInteger("Action") != 2)
@@ -46,6 +51,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public void Die()
     {
         animator.SetInteger("Action", 2);
+        AudioSource.PlayClipAtPoint(pacmanDie, Camera.main.transform.position);
     }
 
     private bool BlockedByWall(float deltaX)

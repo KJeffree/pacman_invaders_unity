@@ -7,10 +7,13 @@ public class Pill : MonoBehaviour
     private Level level;
     private Rigidbody2D pill;
 
+    BonusGhost bonusGhost;
+
     float speed = 5.00f;
 
     void Start()
     {
+        bonusGhost = FindObjectOfType<BonusGhost>();
         pill = GetComponent<Rigidbody2D>();
         level = FindObjectOfType<Level>();
     }
@@ -47,6 +50,7 @@ public class Pill : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             level.UpdateScoreBonusGhost();
+            bonusGhost.Die();
             //    Increase player score - bonus points??
         }
         else if (collision.tag == "Barricade")

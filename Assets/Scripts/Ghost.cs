@@ -13,6 +13,8 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     GhostHiveMind ghostHiveMind;
 
+    [SerializeField] AudioClip ghostDie;
+
     void Start()
     {
         StartCoroutine(WaitAndLoad());
@@ -83,5 +85,6 @@ public class Ghost : MonoBehaviour, ITouchWalls
     {
         ghostHiveMind.RemoveGhost(this);
         level.RemoveGhost();
+        AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
     }
 }

@@ -7,6 +7,8 @@ public class BonusGhost : MonoBehaviour
     private Rigidbody2D bonusGhost;
     public float speed;
 
+    [SerializeField] AudioClip ghostDie;
+
     Wall wall;
 
     void Start()
@@ -31,6 +33,12 @@ public class BonusGhost : MonoBehaviour
     public void setSpeed(float newSpeed)
     {
         speed = newSpeed;
+    }
+
+    public void Die()
+    {
+        AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
+
     }
 
     // Not working with current camera aspect
