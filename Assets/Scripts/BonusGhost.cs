@@ -42,11 +42,11 @@ public class BonusGhost : MonoBehaviour
         speed = newSpeed;
     }
 
-    public void Die()
-    {
-        AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
+    // public void Die()
+    // {
+    //     AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
 
-    }
+    // }
 
     // Not working with current camera aspect
     // private void OnBecameInvisible()

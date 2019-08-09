@@ -100,7 +100,7 @@ MonoBehaviour:
   ghostPill: {fileID: 5886033735981310057, guid: 8569113d3c197854ab5b740ad9275545,
     type: 3}
   ghostPillSpawn: {fileID: 286030957033724480}
-  ghostDie: {fileID: 8300000, guid: 19df16eb808bd44be85d832a8361e677, type: 3}
+  ghostDie: {fileID: 8300000, guid: 9fac7abbbe8ed41f5a2fe7e8c19bc762, type: 3}
 --- !u!60 &8809045103077114984
 PolygonCollider2D:
   m_ObjectHideFlags: 0

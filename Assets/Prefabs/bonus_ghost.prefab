@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -2
-  ghostDie: {fileID: 8300000, guid: 19df16eb808bd44be85d832a8361e677, type: 3}
+  ghostDie: {fileID: 8300000, guid: 9fac7abbbe8ed41f5a2fe7e8c19bc762, type: 3}
 --- !u!50 &8729830067578860516
 Rigidbody2D:
   serializedVersion: 4

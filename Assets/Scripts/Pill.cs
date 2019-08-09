@@ -50,7 +50,7 @@ public class Pill : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             level.UpdateScoreBonusGhost();
-            bonusGhost.Die();
+            // bonusGhost.Die();
             //    Increase player score - bonus points??
         }
         else if (collision.tag == "Barricade")
