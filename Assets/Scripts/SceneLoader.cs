@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
 
     [SerializeField] float delayInSeconds = 2f;
-    // Start is called before the first frame update
+    
     void Start()
     {
         

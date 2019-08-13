@@ -43,7 +43,6 @@ public class GhostPill : MonoBehaviour
         }
         else if (collision.tag == "Barricade")
         {
-            //    Degrade barricade?? 
             Destroy(gameObject);
             collision.gameObject.GetComponent<Barricade>().DegradeBarricade();
         }

@@ -10,6 +10,8 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     [SerializeField] GameObject ghostPill;
     [SerializeField] Transform ghostPillSpawn;
+    [SerializeField] GameObject fruit;
+    [SerializeField] Transform fruitSpawn;
 
     GhostHiveMind ghostHiveMind;
 
@@ -56,6 +58,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
     {
         Instantiate(ghostPill, ghostPillSpawn.position, ghostPillSpawn.rotation);
     }
+
     public void ReverseDirection()
     {
         movingRight = !movingRight;
@@ -69,6 +72,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     public void ExitWall()
     {
+
     }
 
     public void ResetGame()
@@ -83,6 +87,11 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     public void Die()
     {
+        if (Random.Range(0, 10) == 0)
+        {
+            Instantiate(fruit, fruitSpawn.position, fruitSpawn.rotation);
+        }
+        
         ghostHiveMind.RemoveGhost(this);
         level.RemoveGhost();
         // AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
