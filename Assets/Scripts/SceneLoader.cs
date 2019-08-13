@@ -34,6 +34,7 @@ public class SceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(delayInSeconds);
         SceneManager.LoadScene(2);
+        CancelInvoke();
     }
 
     public void LoadStartScene()

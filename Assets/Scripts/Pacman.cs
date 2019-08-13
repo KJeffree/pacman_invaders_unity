@@ -14,10 +14,8 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public Transform pillSpawn;
     public float fireRate;
     private float nextFire;
-    private Level level;
     private Animator animator;
 
-    [SerializeField] Sprite[] pacmanSprites;
     float animationTimout;
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
@@ -26,19 +24,20 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     void Start()
     {
-        StartCoroutine(WaitAndLoad());
+        StartCoroutine(WaitAndLoadStart());
         animator = this.GetComponent<Animator>();
     }
 
-    IEnumerator WaitAndLoad()
+    IEnumerator WaitAndLoadStart()
     {
         yield return new WaitForSeconds(4);
         InvokeRepeating("PacmanBehaviour", 0, 0.02f);
     }
 
-    void Update()
+    IEnumerator WaitAndLoadHit()
     {
-        
+        yield return new WaitForSeconds(0.5f);
+        InvokeRepeating("PacmanBehaviour", 0, 0.02f);
     }
 
     private void PacmanBehaviour()
@@ -70,7 +69,12 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     public void HitByPill()
     {
+        CancelInvoke("PacmanBehaviour");
         AudioSource.PlayClipAtPoint(pacmanHit, Camera.main.transform.position);
+        Barricade barricade = FindObjectOfType<Barricade>();
+        GetComponent<Transform>().position = new Vector3(barricade.transform.position.x, transform.position.y, transform.position.z);
+        StartCoroutine(WaitAndLoadHit());
+
     }
 
     private bool BlockedByWall(float deltaX)
