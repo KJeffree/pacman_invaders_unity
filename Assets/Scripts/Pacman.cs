@@ -72,8 +72,17 @@ public class Pacman : MonoBehaviour, ITouchWalls
         CancelInvoke("PacmanBehaviour");
         AudioSource.PlayClipAtPoint(pacmanHit, Camera.main.transform.position);
         Barricade barricade = FindObjectOfType<Barricade>();
-        GetComponent<Transform>().position = new Vector3(barricade.transform.position.x, transform.position.y, transform.position.z);
-        StartCoroutine(WaitAndLoadHit());
+        if (barricade)
+        {
+            GetComponent<Transform>().position = new Vector3(barricade.transform.position.x, transform.position.y, transform.position.z);
+            StartCoroutine(WaitAndLoadHit());
+        }
+        else
+        {
+            GetComponent<Transform>().position = new Vector3(1.60f, transform.position.y, transform.position.z);
+            StartCoroutine(WaitAndLoadHit());
+        }
+        
 
     }
 
