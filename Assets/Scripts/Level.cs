@@ -173,6 +173,11 @@ public class Level : MonoBehaviour
         score += 100;
     }
 
+    public void UpdateScoreFruit()
+    {
+        score += 75;
+    }
+
     public void RemoveTextScoreAndLives()
     {
         Destroy(livesText);

@@ -6,13 +6,14 @@ public class Fruit : MonoBehaviour
 {
 
     private Rigidbody2D fruit;
-
+    private Level level;
     float speed = 2.00f;
 
     
     void Start()
     {
         fruit = GetComponent<Rigidbody2D>();
+        level = FindObjectOfType<Level>();
     }
 
     
@@ -31,7 +32,8 @@ public class Fruit : MonoBehaviour
         if (collision.tag == "Pacman")
         {
             Destroy(gameObject);
-            //    Increase player score??
+            collision.gameObject.GetComponent<Pacman>().EatFruit();
+            level.UpdateScoreFruit();
         }
         
         

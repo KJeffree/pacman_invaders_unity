@@ -32,7 +32,6 @@ public class Ghost : MonoBehaviour, ITouchWalls
         InvokeRepeating("ghostMovement", 0, 0.02f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

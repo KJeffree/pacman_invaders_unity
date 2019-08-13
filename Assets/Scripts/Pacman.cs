@@ -7,8 +7,9 @@ public class Pacman : MonoBehaviour, ITouchWalls
     float speed = 10.00f;
 
     [SerializeField] AudioClip pacmanDie;
-
     [SerializeField] AudioClip pacmanHit;
+    [SerializeField] AudioClip pacmanEatFruit;
+    [SerializeField] AudioClip shootPill;
 
     public GameObject pill;
     public Transform pillSpawn;
@@ -19,8 +20,6 @@ public class Pacman : MonoBehaviour, ITouchWalls
     float animationTimout;
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
-
-    [SerializeField] AudioClip shootPill;
 
     void Start()
     {
@@ -82,8 +81,11 @@ public class Pacman : MonoBehaviour, ITouchWalls
             GetComponent<Transform>().position = new Vector3(1.60f, transform.position.y, transform.position.z);
             StartCoroutine(WaitAndLoadHit());
         }
-        
+    }
 
+    public void EatFruit()
+    {
+        AudioSource.PlayClipAtPoint(pacmanEatFruit, Camera.main.transform.position);
     }
 
     private bool BlockedByWall(float deltaX)

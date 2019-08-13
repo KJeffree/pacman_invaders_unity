@@ -28,12 +28,6 @@ public class Pill : MonoBehaviour
         }
     }
 
-    // Not working with current camera aspect
-    /* private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    } */
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ghost")
