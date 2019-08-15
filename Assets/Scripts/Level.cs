@@ -17,6 +17,8 @@ public class Level : MonoBehaviour
 
     [SerializeField] int lives = 3;
 
+    [SerializeField] GameObject[] livesImages;
+
     [SerializeField] int score = 0;
 
     [SerializeField] TextMeshProUGUI scoreText;
@@ -34,6 +36,7 @@ public class Level : MonoBehaviour
     [SerializeField] Transform ghostsSpwan;
 
     GameObject ghostObject;
+
 
     int wave = 0;
 
@@ -134,6 +137,7 @@ public class Level : MonoBehaviour
             FindObjectOfType<Pacman>().Die();
             sceneLoader.LoadLoseScene();
         }
+        Destroy(livesImages[lives]);
     }
 
      private void NextGhostWave()
