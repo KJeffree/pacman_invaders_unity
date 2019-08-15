@@ -23,8 +23,6 @@ public class Level : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText;
 
-    [SerializeField] TextMeshProUGUI livesText;
-
     public BonusGhost bonusGhost;
     float spawnTime = 15;
     Vector2 spawnPoint;
@@ -83,9 +81,9 @@ public class Level : MonoBehaviour
 
     void Update()
     {
-        if (livesText && scoreText)
+        if (scoreText)
         {
-            UpdateLivesAndScoreText();
+            UpdateScoreText();
         }
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -161,9 +159,8 @@ public class Level : MonoBehaviour
         }
     }
 
-    private void UpdateLivesAndScoreText()
+    private void UpdateScoreText()
     {
-        livesText.text = lives.ToString();
         scoreText.text = score.ToString();
     }
 
@@ -184,7 +181,6 @@ public class Level : MonoBehaviour
 
     public void RemoveTextScoreAndLives()
     {
-        Destroy(livesText);
         Destroy(scoreText);
     }
 
