@@ -8,6 +8,21 @@ public class GhostHiveMind : MonoBehaviour
     private static float lastWallHit = 0.0f;
     static float fireDelay = 1;
     static float nextFire = 1;
+    [SerializeField] Fruit[] fruits;
+
+
+    public void AssignFruit()
+    {
+        int i=0;
+        int amount = 4;
+        while (i < amount)
+        {
+            int ghostIndex = Random.Range(0, ghosts.Count-1);
+            Debug.Log(ghosts.Count);
+            ghosts[ghostIndex].SetFruit(fruits[i]);
+            i++;
+        }
+    }
 
     public void FirePill()
     {

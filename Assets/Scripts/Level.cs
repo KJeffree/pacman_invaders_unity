@@ -35,6 +35,8 @@ public class Level : MonoBehaviour
 
     GameObject ghostObject;
 
+    GhostHiveMind ghostHiveMind;
+
 
     int wave = 0;
 
@@ -62,6 +64,15 @@ public class Level : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(startGame, Camera.main.transform.position);
 
+        ghostHiveMind = FindObjectOfType<GhostHiveMind>();
+
+        Invoke("AssignFruit", 2);
+
+    }
+
+    public void AssignFruit()
+    {
+        ghostHiveMind.AssignFruit();
     }
 
     public int GetEndScore()
@@ -144,7 +155,7 @@ public class Level : MonoBehaviour
         ghostObject = Instantiate(ghostsPrefab, startPosition, ghostsSpwan.rotation);
         StartCoroutine(MoveToPosition(ghostObject.GetComponent<Transform>(), new Vector3(0.0f, 0.0f, 0.0f), 4));
         AudioSource.PlayClipAtPoint(newWave, Camera.main.transform.position);
-
+        Invoke("AssignFruit", 2);
     }
 
     public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)

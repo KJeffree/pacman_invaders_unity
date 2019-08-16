@@ -94,7 +94,6 @@ MonoBehaviour:
   - {fileID: 5448939358887064913}
   score: 0
   scoreText: {fileID: 7588114932520215846}
-  livesText: {fileID: 0}
   bonusGhost: {fileID: 7749230955786626991, guid: 312f3ec62d00a4f41b7f75ee6c24af52,
     type: 3}
   ghosts: []
@@ -115,6 +114,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghosts: []
+  fruits:
+  - {fileID: 7312784553423530163, guid: 7246c061da07b8c428b69892872e7cd7, type: 3}
+  - {fileID: 7349434782806573675, guid: 7f7b7e787144f4895b270e5fc337a1c7, type: 3}
+  - {fileID: -1341239305697650685, guid: a7c445140ae594338ad751cc9ef29bed, type: 3}
+  - {fileID: 3471352026802225201, guid: 6baab916fe2374f569f0ca526395fc02, type: 3}
 --- !u!1 &5448939358887064913
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     [SerializeField] GameObject ghostPill;
     [SerializeField] Transform ghostPillSpawn;
-    [SerializeField] GameObject[] fruits;
+    [SerializeField] Fruit fruit;
     [SerializeField] Transform fruitSpawn;
 
     GhostHiveMind ghostHiveMind;
@@ -30,11 +30,6 @@ public class Ghost : MonoBehaviour, ITouchWalls
     {
         yield return new WaitForSeconds(4);
         InvokeRepeating("ghostMovement", 0, 0.02f);
-    }
-
-    void Update()
-    {
-        
     }
 
     private void ghostMovement()
@@ -84,13 +79,16 @@ public class Ghost : MonoBehaviour, ITouchWalls
         transform.Translate(0, -0.3f, 0);
     }
 
+    public void SetFruit(Fruit allocated_fruit)
+    {
+        fruit = allocated_fruit;
+    }
+
     public void Die()
     {
-        if (Random.Range(0, 10) == 0)
+        if (fruit)
         {
-            int wave = Mathf.Clamp(level.GetWaveNumber(), 0, 3);
-            int randomFruit = Random.Range(0, wave);
-            Instantiate(fruits[randomFruit], fruitSpawn.position, fruitSpawn.rotation);
+            Instantiate(fruit, fruitSpawn.position, fruitSpawn.rotation);
         }
         
         ghostHiveMind.RemoveGhost(this);
