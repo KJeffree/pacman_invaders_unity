@@ -7,7 +7,7 @@ public class Fruit : MonoBehaviour
 
     private Rigidbody2D fruit;
     private Level level;
-    float speed = 2.00f;
+    float speed = 4.00f;
 
     
     void Start()
