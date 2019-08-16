@@ -10,16 +10,17 @@ public class GhostHiveMind : MonoBehaviour
     static float nextFire = 1;
     [SerializeField] Fruit[] fruits;
 
-
     public void AssignFruit()
     {
+        Level level = FindObjectOfType<Level>();
         int i=0;
         int amount = 4;
         while (i < amount)
         {
             int ghostIndex = Random.Range(0, ghosts.Count-1);
             Debug.Log(ghosts.Count);
-            ghosts[ghostIndex].SetFruit(fruits[i]);
+            int index = Random.Range(0, Mathf.Clamp(i, 0, level.GetWaveNumber()) + 1);
+            ghosts[ghostIndex].SetFruit(fruits[index]);
             i++;
         }
     }
