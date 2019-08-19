@@ -182,12 +182,17 @@ public class Level : MonoBehaviour
 
     public void UpdateScoreBonusGhost()
     {
-        score += 100;
+        score += 150;
     }
 
     public void UpdateScoreFruit()
     {
-        score += 75;
+        score += 30;
+    }
+
+    public void UpdateScoreCherry()
+    {
+        score += 100;
     }
 
     public void RemoveTextScoreAndLives()

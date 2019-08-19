@@ -29,8 +29,28 @@ public class Fruit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.tag == "Pacman")
         {
+            switch (gameObject.tag)
+            {
+                case "Cherry":
+                    Debug.Log("CHERRY");
+                    level.UpdateScoreCherry();
+                    break;
+                case "Strawberry":
+                    Debug.Log("STRAWBERRY");
+                    break;
+                case "Peach":
+                    Debug.Log("PEACH");
+                    break;
+                case "Apple":
+                    Debug.Log("APPLE");
+                    break;
+                default:
+                    break;
+            }
+
             Destroy(gameObject);
             collision.gameObject.GetComponent<Pacman>().EatFruit();
             level.UpdateScoreFruit();
