@@ -9,6 +9,10 @@ TagManager:
   - Barricade
   - Bonus Ghost
   - Pill
+  - Cherry
+  - Peach
+  - Strawberry
+  - Apple
   layers:
   - Default
   - TransparentFX
