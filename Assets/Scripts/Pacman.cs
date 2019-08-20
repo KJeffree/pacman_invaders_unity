@@ -84,6 +84,12 @@ public class Pacman : MonoBehaviour, ITouchWalls
         }
     }
 
+    public void MakeInvincible()
+    {
+        Debug.Log("Make Invincible Called");
+        animator.SetInteger("Action", 3);
+    }
+
     public void EatFruit()
     {
         AudioSource.PlayClipAtPoint(pacmanEatFruit, Camera.main.transform.position);
