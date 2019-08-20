@@ -7,6 +7,7 @@ public class Fruit : MonoBehaviour
 
     private Rigidbody2D fruit;
     private Level level;
+    private Barricade[] barricades;
     float speed = 4.00f;
 
     
@@ -14,6 +15,7 @@ public class Fruit : MonoBehaviour
     {
         fruit = GetComponent<Rigidbody2D>();
         level = FindObjectOfType<Level>();
+        barricades = FindObjectsOfType<Barricade>();
     }
 
     
@@ -24,6 +26,14 @@ public class Fruit : MonoBehaviour
         if (fruit.position.y <= -1.0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void RestoreBarricades()
+    {
+        foreach (Barricade barricade in barricades)
+        {
+            barricade.Restore();
         }
     }
 
@@ -40,6 +50,7 @@ public class Fruit : MonoBehaviour
                     break;
                 case "Strawberry":
                     Debug.Log("STRAWBERRY");
+                    RestoreBarricades();
                     break;
                 case "Peach":
                     Debug.Log("PEACH");

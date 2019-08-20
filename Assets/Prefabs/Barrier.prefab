@@ -59,6 +59,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -142,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barricadeStates:
+  - {fileID: 21300000, guid: 2a3b9ea3bab4947588b35003d8796591, type: 3}
   - {fileID: 21300000, guid: fd5ef70a05f044355a0b46ced422cfce, type: 3}
   - {fileID: 21300000, guid: 2fc02aaba9f0845fe8de58b7c16599a1, type: 3}
   - {fileID: 21300000, guid: 27b6142de16224665af76fe1dffd589b, type: 3}
