@@ -57,6 +57,7 @@ public class Fruit : MonoBehaviour
                     break;
                 case "Apple":
                     Debug.Log("APPLE");
+                    level.IncreaseLives();
                     break;
                 default:
                     break;

@@ -18,6 +18,8 @@ public class Level : MonoBehaviour
     [SerializeField] int lives = 3;
 
     [SerializeField] GameObject[] livesImages;
+    GameObject lifeImage;
+    [SerializeField] Sprite blankImage;
 
     [SerializeField] int score = 0;
 
@@ -68,6 +70,18 @@ public class Level : MonoBehaviour
 
         Invoke("AssignFruit", 2);
 
+        lifeImage = livesImages[0];
+
+    }
+
+    public void IncreaseLives()
+    {
+        if (lives < 3)
+        {
+            livesImages[lives].GetComponent<UnityEngine.UI.Image>().sprite = lifeImage.GetComponent<UnityEngine.UI.Image>().sprite;
+            lives++;
+
+        }
     }
 
     public void AssignFruit()
@@ -146,7 +160,7 @@ public class Level : MonoBehaviour
             FindObjectOfType<Pacman>().Die();
             sceneLoader.LoadLoseScene();
         }
-        Destroy(livesImages[lives]);
+        Destroy(livesImages[lives].GetComponent<UnityEngine.UI.Image>().sprite = blankImage);
     }
 
      private void NextGhostWave()
