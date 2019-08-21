@@ -160,7 +160,7 @@ public class Level : MonoBehaviour
             FindObjectOfType<Pacman>().Die();
             sceneLoader.LoadLoseScene();
         }
-        Destroy(livesImages[lives].GetComponent<UnityEngine.UI.Image>().sprite = blankImage);
+        livesImages[lives].GetComponent<UnityEngine.UI.Image>().sprite = blankImage;
     }
 
      private void NextGhostWave()
