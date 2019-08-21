@@ -6,7 +6,7 @@ public class GhostHiveMind : MonoBehaviour
 {
     public List<Ghost> ghosts = new List<Ghost>();
     private static float lastWallHit = 0.0f;
-    static float fireDelay = 1;
+    static float fireDelay = 1f;
     static float nextFire = 1;
     [SerializeField] Fruit[] fruits;
 
