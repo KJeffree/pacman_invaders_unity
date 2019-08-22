@@ -25,7 +25,6 @@ public class GhostDetector : MonoBehaviour
     {
         if (collider.tag == "Ghost" && timesCalled == 0)
         {
-            Debug.Log("Ghost Hit");
             sceneLoader.LoadLoseScene();
             timesCalled++;
         }

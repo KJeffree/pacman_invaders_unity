@@ -27,7 +27,6 @@ public class Barricade : MonoBehaviour
 
     private void ChangeBarricadeState()
     {
-        Debug.Log(numberOfHits);
         gameObject.GetComponent<SpriteRenderer>().sprite = barricadeStates[numberOfHits];
         Destroy(GetComponent<BoxCollider2D>());
         gameObject.AddComponent<BoxCollider2D>();

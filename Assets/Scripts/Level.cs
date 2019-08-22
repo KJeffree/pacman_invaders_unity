@@ -25,7 +25,9 @@ public class Level : MonoBehaviour
     GameObject lifeImage;
     [SerializeField] Sprite blankImage;
 
-    [SerializeField] int score = 0;
+    [SerializeField] GameObject saveScoreButton;
+
+    [SerializeField] int score;
 
     [SerializeField] TextMeshProUGUI scoreText;
 
@@ -64,6 +66,8 @@ public class Level : MonoBehaviour
 
     void Start()
     {
+        saveScoreButton.SetActive(false);
+
         sceneLoader = FindObjectOfType<SceneLoader>();
     
         InvokeRepeating("addBonusGhost", 0, spawnTime);
@@ -78,11 +82,14 @@ public class Level : MonoBehaviour
 
         lifeImage = livesImages[0];
 
+        highscoreText.text = null;
+
     }
 
     public void LoadHighScores()
     {
-        Debug.Log(File.Exists(Application.persistentDataPath + "/playerScores.dat"));
+        saveScoreButton.SetActive(true);
+
         if(File.Exists(Application.persistentDataPath + "/playerScores.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -93,10 +100,16 @@ public class Level : MonoBehaviour
                 file.Close();
 
                 scores = playerScores.scores;
+                scores.Sort();
+                scores.Reverse();
+                String text = null;
 
-                Debug.Log(scores[0]);
+                for (int i=0; i < 4; i++)
+                {
+                    text += scores[i].ToString() + "\n ";
+                }
 
-                highscoreText.text = scores[0].ToString();
+                highscoreText.text = text;
                 Debug.Log("Loaded!");
             }
             
@@ -106,7 +119,7 @@ public class Level : MonoBehaviour
 
     public void SaveScore()
     {
-        Debug.Log("Saving called");
+        Debug.Log(score);
 
         scores.Add(score);
         BinaryFormatter bf = new BinaryFormatter();
@@ -118,7 +131,15 @@ public class Level : MonoBehaviour
         bf.Serialize(file, playerScores);
         file.Close();
 
+        LoadHighScores();
+
         Debug.Log("Saved!");
+    }
+
+    void OnDisable()
+    {
+        highscoreText.text = null;
+        saveScoreButton.SetActive(false);
     }
 
     public void IncreaseLives()

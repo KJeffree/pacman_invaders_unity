@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &657563569752539694
+--- !u!1 &3520147902022118366
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 657563569752539681}
-  - component: {fileID: 657563569752539683}
-  - component: {fileID: 657563569752539680}
+  - component: {fileID: 3520147901317446917}
+  - component: {fileID: 3520147902022118360}
+  - component: {fileID: 3520147902022118361}
   m_Layer: 5
   m_Name: HighScores
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &657563569752539681
+--- !u!224 &3520147901317446917
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657563569752539694}
+  m_GameObject: {fileID: 3520147902022118366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,24 +34,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.7, y: -36}
-  m_SizeDelta: {x: 506.4, y: 130.6}
+  m_AnchoredPosition: {x: 17.5, y: -61.8}
+  m_SizeDelta: {x: 508.1, y: 182.2}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &657563569752539683
+--- !u!222 &3520147902022118360
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657563569752539694}
+  m_GameObject: {fileID: 3520147902022118366}
   m_CullTransparentMesh: 0
---- !u!114 &657563569752539680
+--- !u!114 &3520147902022118361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657563569752539694}
+  m_GameObject: {fileID: 3520147902022118366}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 1.7404175, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 657563569752539680}
+    textComponent: {fileID: 3520147902022118361}
     characterCount: 0
     spriteCount: 0
     spaceCount: 0

@@ -18,7 +18,6 @@ public class GhostHiveMind : MonoBehaviour
         while (i < amount)
         {
             int ghostIndex = Random.Range(0, ghosts.Count-1);
-            Debug.Log(ghosts.Count);
             int index = Random.Range(0, Mathf.Clamp(i, 0, level.GetWaveNumber()) + 1);
             ghosts[ghostIndex].SetFruit(fruits[index]);
             i++;
