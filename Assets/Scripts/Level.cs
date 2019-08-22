@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 
 public class Level : MonoBehaviour
@@ -72,6 +75,23 @@ public class Level : MonoBehaviour
 
         lifeImage = livesImages[0];
 
+    }
+
+    void OnEnable()
+    {
+        
+    }
+
+    void onDisable()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/playerScores.dat", FileMode.Open);
+
+        PlayerScores playerScores = new PlayerScores();
+        playerScores.scores.Add(score);
+
+        bf.Serialize(file, playerScores);
+        file.Close();
     }
 
     public void IncreaseLives()
@@ -219,7 +239,7 @@ public class Level : MonoBehaviour
         var spawnPointLeft = new Vector2(-1.39f, 9.32f);
         var spawnPointRight = new Vector2(13.39f, 9.32f);
 
-        if (Random.Range(0, 2) == 0)
+        if (UnityEngine.Random.Range(0, 2) == 0)
         {
             spawnPoint = spawnPointLeft;
             bonusGhost.speed = 2.0f;
@@ -231,4 +251,9 @@ public class Level : MonoBehaviour
 
         Instantiate(bonusGhost, spawnPoint, Quaternion.identity);
     }
+}
+[Serializable]
+class PlayerScores
+{
+    public List<int> scores;
 }
