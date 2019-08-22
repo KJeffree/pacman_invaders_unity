@@ -11,6 +11,7 @@ using System.IO;
 public class Level : MonoBehaviour
 {
 
+    List<int> scores;
     SceneLoader sceneLoader;
     [SerializeField] AudioClip startGame;
 
@@ -27,6 +28,8 @@ public class Level : MonoBehaviour
     [SerializeField] int score = 0;
 
     [SerializeField] TextMeshProUGUI scoreText;
+
+    [SerializeField] TextMeshProUGUI highscoreText;
 
     public BonusGhost bonusGhost;
     float spawnTime = 15;
@@ -77,21 +80,45 @@ public class Level : MonoBehaviour
 
     }
 
-    void OnEnable()
+    public void LoadHighScores()
     {
+        Debug.Log(File.Exists(Application.persistentDataPath + "/playerScores.dat"));
+        if(File.Exists(Application.persistentDataPath + "/playerScores.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerScores.dat", FileMode.Open);
+            if (file.Length != 0)
+            {
+                PlayerScores playerScores = (PlayerScores)bf.Deserialize(file);
+                file.Close();
+
+                scores = playerScores.scores;
+
+                Debug.Log(scores[0]);
+
+                highscoreText.text = scores[0].ToString();
+                Debug.Log("Loaded!");
+            }
+            
+        }
         
     }
 
-    void onDisable()
+    public void SaveScore()
     {
+        Debug.Log("Saving called");
+
+        scores.Add(score);
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/playerScores.dat", FileMode.Open);
+        FileStream file = File.Create(Application.persistentDataPath + "/playerScores.dat");
 
         PlayerScores playerScores = new PlayerScores();
-        playerScores.scores.Add(score);
+        playerScores.scores = scores;
 
         bf.Serialize(file, playerScores);
         file.Close();
+
+        Debug.Log("Saved!");
     }
 
     public void IncreaseLives()
