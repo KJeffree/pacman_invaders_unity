@@ -1178,7 +1178,7 @@ PrefabInstance:
     - target: {fileID: 847222511, guid: 4e226e436ef57431f97d06638d749fa0, type: 3}
       propertyPath: fruits.Array.data[0]
       value: 
-      objectReference: {fileID: 3471352026802225201, guid: 6baab916fe2374f569f0ca526395fc02,
+      objectReference: {fileID: 7312784553423530163, guid: 7246c061da07b8c428b69892872e7cd7,
         type: 3}
     - target: {fileID: 5397233798349666982, guid: 4e226e436ef57431f97d06638d749fa0,
         type: 3}
