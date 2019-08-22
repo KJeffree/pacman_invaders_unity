@@ -104,9 +104,12 @@ public class Level : MonoBehaviour
                 scores.Reverse();
                 String text = null;
 
-                for (int i=0; i < scores.Count; i++)
+                for (int i=0; i < 4; i++)
                 {
-                    text += scores[i].ToString() + "\n ";
+                    if (i < scores.Count)
+                    {
+                        text += scores[i].ToString() + "\n ";
+                    }
                 }
 
                 highscoreText.text = text;
