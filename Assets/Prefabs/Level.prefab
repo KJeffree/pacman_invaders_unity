@@ -615,11 +615,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1179458995360826628}
     m_Modifications:
-    - target: {fileID: 992805952989624316, guid: 580a4a33ea8bc4d03ab9d3bf5813087e,
-        type: 3}
-      propertyPath: m_Name
-      value: SaveScore
-      objectReference: {fileID: 0}
     - target: {fileID: 992805952989624315, guid: 580a4a33ea8bc4d03ab9d3bf5813087e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -725,6 +720,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 992805952989624316, guid: 580a4a33ea8bc4d03ab9d3bf5813087e,
+        type: 3}
+      propertyPath: m_Name
+      value: SaveScore
+      objectReference: {fileID: 0}
     - target: {fileID: 992805952989624314, guid: 580a4a33ea8bc4d03ab9d3bf5813087e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -776,11 +776,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1179458995360826628}
     m_Modifications:
-    - target: {fileID: 3520147902022118366, guid: cbbe967266fd5495f87f0649c0845a7b,
-        type: 3}
-      propertyPath: m_Name
-      value: HighScores
-      objectReference: {fileID: 0}
     - target: {fileID: 3520147901317446917, guid: cbbe967266fd5495f87f0649c0845a7b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -885,6 +880,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520147902022118361, guid: cbbe967266fd5495f87f0649c0845a7b,
+        type: 3}
+      propertyPath: m_text
+      value: "0\n 0\n 0\n "
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520147902022118366, guid: cbbe967266fd5495f87f0649c0845a7b,
+        type: 3}
+      propertyPath: m_Name
+      value: HighScores
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbbe967266fd5495f87f0649c0845a7b, type: 3}

@@ -104,7 +104,7 @@ public class Level : MonoBehaviour
                 scores.Reverse();
                 String text = null;
 
-                for (int i=0; i < 4; i++)
+                for (int i=0; i < scores.Count; i++)
                 {
                     text += scores[i].ToString() + "\n ";
                 }
@@ -119,7 +119,7 @@ public class Level : MonoBehaviour
 
     public void SaveScore()
     {
-        Debug.Log(score);
+        Debug.Log(scores);
 
         scores.Add(score);
         BinaryFormatter bf = new BinaryFormatter();
