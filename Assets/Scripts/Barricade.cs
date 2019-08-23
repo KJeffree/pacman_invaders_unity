@@ -19,8 +19,12 @@ public class Barricade : MonoBehaviour
         if (numberOfHits < 12){
             numberOfHits++;
             ChangeBarricadeState();
-        } else {
-            Destroy(gameObject);
+        }
+        else if (numberOfHits == 12)
+        {
+            numberOfHits++;
+            gameObject.GetComponent<SpriteRenderer>().sprite = barricadeStates[numberOfHits];
+            Destroy(GetComponent<BoxCollider2D>());
         }
         
     }
