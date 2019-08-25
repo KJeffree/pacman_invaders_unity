@@ -222,6 +222,7 @@ public class Level : MonoBehaviour
             {
                 ghost.IncreaseSpeed();
             }
+            ghostHiveMind.IncreaseShooting();
             x++;
         }
     }

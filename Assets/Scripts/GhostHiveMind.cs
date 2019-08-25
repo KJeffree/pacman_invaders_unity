@@ -24,6 +24,14 @@ public class GhostHiveMind : MonoBehaviour
         }
     }
 
+    public void IncreaseShooting()
+    {
+        if (fireDelay > 0)
+        {
+            fireDelay -= 0.05f;
+        }
+    }
+
     public void StopGhostMovement()
     {
         foreach (Ghost ghost in ghosts)
