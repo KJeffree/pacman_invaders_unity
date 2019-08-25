@@ -240,6 +240,11 @@ public class Level : MonoBehaviour
      private void NextGhostWave()
     {
         pacman.PreventShooting();
+        Pill[] pills = FindObjectsOfType<Pill>();
+        foreach (Pill pill in pills)
+        {
+            Destroy(pill);
+        }
         Vector3 startPosition= new Vector3(0.0f, 5.5f, 0.0f);
         ghostObject = Instantiate(ghostsPrefab, startPosition, ghostsSpwan.rotation);
         StartCoroutine(MoveToPosition(ghostObject.GetComponent<Transform>(), new Vector3(0.0f, 0.0f, 0.0f), 4));
