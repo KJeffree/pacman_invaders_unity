@@ -16,6 +16,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public float fireRate;
     private float nextFire;
     private Animator animator;
+    bool pacmanInvincible = false;
 
     float animationTimout;
     bool touchingLeftWall = false;
@@ -86,9 +87,14 @@ public class Pacman : MonoBehaviour, ITouchWalls
         }
     }
 
+    public bool GetPacmanInvincibility()
+    {
+        return pacmanInvincible;
+    }
+
     public void MakeInvincible()
     {
-        Debug.Log("Make Invincible Called");
+        pacmanInvincible = true;
         InvokeRepeating("ChangePacmanColour", 0, 0.2f);
         StartCoroutine(CancelInvincible());
     }
@@ -97,6 +103,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
     {
         yield return new WaitForSeconds(5);
         CancelInvoke("ChangePacmanColour");
+        pacmanInvincible = false;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
