@@ -8,6 +8,8 @@ public class Fruit : MonoBehaviour
     private Rigidbody2D fruit;
     private Level level;
     private Barricade[] barricades;
+
+    private Pacman pacman;
     float speed = 4.00f;
 
     
@@ -16,6 +18,7 @@ public class Fruit : MonoBehaviour
         fruit = GetComponent<Rigidbody2D>();
         level = FindObjectOfType<Level>();
         barricades = FindObjectsOfType<Barricade>();
+        pacman = FindObjectOfType<Pacman>();
     }
 
     
@@ -51,6 +54,7 @@ public class Fruit : MonoBehaviour
                     RestoreBarricades();
                     break;
                 case "Peach":
+                    pacman.MakeInvincible();
                     break;
                 case "Apple":
                     level.IncreaseLives();

@@ -16,10 +16,13 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public float fireRate;
     private float nextFire;
     private Animator animator;
+    bool pacmanInvincible = false;
 
     float animationTimout;
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
+
+    bool colour = true;
 
     void Start()
     {
@@ -96,6 +99,43 @@ public class Pacman : MonoBehaviour, ITouchWalls
         {
             GetComponent<Transform>().position = new Vector3(1.60f, transform.position.y, transform.position.z);
             StartCoroutine(WaitAndLoadHit());
+        }
+    }
+
+    public bool GetPacmanInvincibility()
+    {
+        return pacmanInvincible;
+    }
+
+    public void MakeInvincible()
+    {
+        CancelInvoke("ChangePacmanColour");
+        pacmanInvincible = true;
+        InvokeRepeating("ChangePacmanColour", 0, 0.2f);
+        StartCoroutine(CancelInvincible());
+    }
+
+    IEnumerator CancelInvincible()
+    {
+        yield return new WaitForSeconds(5);
+        CancelInvoke("ChangePacmanColour");
+        pacmanInvincible = false;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
+    void ChangePacmanColour()
+    {
+        var color1 = new Color(1, 0, 0, 1);
+        var color2 = new Color(1, 1, 1, 1);
+
+        colour = !colour;
+
+        if (colour)
+        {
+            GetComponent<SpriteRenderer>().color = color1;
+        } else 
+        {
+            GetComponent<SpriteRenderer>().color = color2;
         }
     }
 
