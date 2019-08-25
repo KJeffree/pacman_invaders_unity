@@ -29,7 +29,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
     IEnumerator WaitAndLoad()
     {
         yield return new WaitForSeconds(4);
-        InvokeRepeating("GhostMovement", 0, 0.02f);
+        InvokeRepeating("GhostMovement", 0, 0.03f);
     }
 
     private void GhostMovement()

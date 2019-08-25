@@ -111,7 +111,7 @@ public class Level : MonoBehaviour
                 {
                     if (i < scores.Count)
                     {
-                        text += scores[i].ToString() + "\n ";
+                        text += scores[i].ToString() + "\n";
                     }
                 }
 
