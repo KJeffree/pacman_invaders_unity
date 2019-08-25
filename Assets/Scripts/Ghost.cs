@@ -29,10 +29,10 @@ public class Ghost : MonoBehaviour, ITouchWalls
     IEnumerator WaitAndLoad()
     {
         yield return new WaitForSeconds(4);
-        InvokeRepeating("ghostMovement", 0, 0.02f);
+        InvokeRepeating("GhostMovement", 0, 0.02f);
     }
 
-    private void ghostMovement()
+    private void GhostMovement()
     {
         float deltaX = speed * Time.deltaTime;
         if (!movingRight)
@@ -41,6 +41,11 @@ public class Ghost : MonoBehaviour, ITouchWalls
         }
         transform.Translate(deltaX, 0, 0);
         ghostHiveMind.FirePill();
+    }
+
+    public void StopMovement()
+    {
+        CancelInvoke("GhostMovement");
     }
 
     public void IncreaseSpeed()

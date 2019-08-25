@@ -24,6 +24,14 @@ public class GhostHiveMind : MonoBehaviour
         }
     }
 
+    public void StopGhostMovement()
+    {
+        foreach (Ghost ghost in ghosts)
+        {
+            ghost.StopMovement();
+        }
+    }
+
     public void FirePill()
     {
         if (Time.time > nextFire)
