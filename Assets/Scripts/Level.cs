@@ -140,6 +140,8 @@ public class Level : MonoBehaviour
         LoadHighScores();
 
         Debug.Log("Saved!");
+
+        saveScoreButton.SetActive(false);
     }
 
     void OnDisable()
