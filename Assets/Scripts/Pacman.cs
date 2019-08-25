@@ -66,6 +66,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public void Die()
     {
         CancelInvoke("PacmanBehaviour");
+        Destroy(GetComponent<PolygonCollider2D>());
         animator.SetInteger("Action", 2);
         AudioSource.PlayClipAtPoint(pacmanDie, Camera.main.transform.position);
     }

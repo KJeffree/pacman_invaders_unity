@@ -6,6 +6,9 @@ public class GhostDetector : MonoBehaviour
 {
 
     SceneLoader sceneLoader;
+
+    int timesCalled = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +23,10 @@ public class GhostDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Ghost")
+        if (collider.tag == "Ghost" && timesCalled == 0)
         {
             sceneLoader.LoadLoseScene();
+            timesCalled++;
         }
     }
 }

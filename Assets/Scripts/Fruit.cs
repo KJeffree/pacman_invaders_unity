@@ -48,19 +48,16 @@ public class Fruit : MonoBehaviour
             switch (gameObject.tag)
             {
                 case "Cherry":
-                    Debug.Log("CHERRY");
                     level.UpdateScoreCherry();
                     break;
                 case "Strawberry":
-                    Debug.Log("STRAWBERRY");
                     RestoreBarricades();
                     break;
                 case "Peach":
-                    Debug.Log("PEACH");
                     pacman.MakeInvincible();
                     break;
                 case "Apple":
-                    Debug.Log("APPLE");
+                    level.IncreaseLives();
                     break;
                 default:
                     break;
