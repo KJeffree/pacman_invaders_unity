@@ -27,9 +27,18 @@ public class Pacman : MonoBehaviour, ITouchWalls
         animator = this.GetComponent<Animator>();
     }
 
+    public void PreventShooting()
+    {
+        CancelInvoke("PacmanBehaviour");
+        InvokeRepeating("PacmanMovement", 0, 0.02f);
+        StartCoroutine(WaitAndLoadStart());
+    }
+
+
     IEnumerator WaitAndLoadStart()
     {
         yield return new WaitForSeconds(4);
+        CancelInvoke("PacmanMovement");
         InvokeRepeating("PacmanBehaviour", 0, 0.02f);
     }
 
@@ -41,9 +50,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     private void PacmanBehaviour()
     {
-        var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        if (BlockedByWall(deltaX)) deltaX = 0;
-        transform.Translate(deltaX, 0, 0);
+        PacmanMovement();
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire)
         {
@@ -58,6 +65,13 @@ public class Pacman : MonoBehaviour, ITouchWalls
         {
             animator.SetInteger("Action", 0);
         }
+    }
+
+    private void PacmanMovement()
+    {
+        var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        if (BlockedByWall(deltaX)) deltaX = 0;
+        transform.Translate(deltaX, 0, 0);
     }
 
     public void Die()

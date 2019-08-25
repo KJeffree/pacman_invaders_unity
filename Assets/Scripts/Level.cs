@@ -47,8 +47,9 @@ public class Level : MonoBehaviour
 
     GhostHiveMind ghostHiveMind;
 
-
     int wave = 0;
+
+    Pacman pacman;
 
     private void Awake()
     {
@@ -83,6 +84,8 @@ public class Level : MonoBehaviour
         lifeImage = livesImages[0];
 
         highscoreText.text = null;
+
+        pacman = FindObjectOfType<Pacman>();
 
     }
 
@@ -228,7 +231,7 @@ public class Level : MonoBehaviour
         lives -= 1;
         if (lives <= 0)
         {
-            FindObjectOfType<Pacman>().Die();
+            pacman.Die();
             sceneLoader.LoadLoseScene();
         }
         livesImages[lives].GetComponent<UnityEngine.UI.Image>().sprite = blankImage;
@@ -236,6 +239,7 @@ public class Level : MonoBehaviour
 
      private void NextGhostWave()
     {
+        pacman.PreventShooting();
         Vector3 startPosition= new Vector3(0.0f, 5.5f, 0.0f);
         ghostObject = Instantiate(ghostsPrefab, startPosition, ghostsSpwan.rotation);
         StartCoroutine(MoveToPosition(ghostObject.GetComponent<Transform>(), new Vector3(0.0f, 0.0f, 0.0f), 4));
