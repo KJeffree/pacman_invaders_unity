@@ -21,6 +21,8 @@ public class Pacman : MonoBehaviour, ITouchWalls
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
 
+    bool colour = true;
+
     void Start()
     {
         StartCoroutine(WaitAndLoadStart());
@@ -87,7 +89,31 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public void MakeInvincible()
     {
         Debug.Log("Make Invincible Called");
-        animator.SetInteger("Action", 3);
+        InvokeRepeating("ChangePacmanColour", 0, 0.2f);
+        StartCoroutine(CancelInvincible());
+    }
+
+    IEnumerator CancelInvincible()
+    {
+        yield return new WaitForSeconds(5);
+        CancelInvoke("ChangePacmanColour");
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
+    void ChangePacmanColour()
+    {
+        var color1 = new Color(1, 0, 0, 1);
+        var color2 = new Color(1, 1, 1, 1);
+
+        colour = !colour;
+
+        if (colour)
+        {
+            GetComponent<SpriteRenderer>().color = color1;
+        } else 
+        {
+            GetComponent<SpriteRenderer>().color = color2;
+        }
     }
 
     public void EatFruit()
