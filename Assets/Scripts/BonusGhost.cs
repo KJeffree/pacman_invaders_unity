@@ -19,11 +19,11 @@ public class BonusGhost : MonoBehaviour
 
         Physics2D.IgnoreCollision(wall.GetComponent<BoxCollider2D>(), GetComponent<PolygonCollider2D>(), true);
     }
-
+    
     IEnumerator WaitAndLoad()
     {
         yield return new WaitForSeconds(4);
-        InvokeRepeating("BonusGhostMovement", 0, 0.5f);
+        InvokeRepeating("BonusGhostMovement", 0, 0.01f);
     }
 
 
@@ -36,23 +36,5 @@ public class BonusGhost : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void setSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-    }
-
-    // public void Die()
-    // {
-    //     AudioSource.PlayClipAtPoint(ghostDie, Camera.main.transform.position);
-
-    // }
-
-    // Not working with current camera aspect
-    // private void OnBecameInvisible()
-    // {
-    //     Destroy(gameObject);
-    // }
-
     
 }

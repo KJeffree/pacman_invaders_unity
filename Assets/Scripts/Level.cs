@@ -302,16 +302,32 @@ public class Level : MonoBehaviour
         if (UnityEngine.Random.Range(0, 2) == 0)
         {
             spawnPoint = spawnPointLeft;
-            bonusGhost.speed = 2.0f;
+            BonusGhostSpeedSet(2.0f, 0.1f);
         } else
         {
             spawnPoint = spawnPointRight;
-            bonusGhost.speed = -2.0f;
+            BonusGhostSpeedSet(-2.0f, -0.1f);
         }
 
         Instantiate(bonusGhost, spawnPoint, Quaternion.identity);
     }
+
+    private void BonusGhostSpeedSet(float speed, float change)
+    {
+        bonusGhost.speed = speed;
+            int x = 0;
+            while (x < wave)
+            {
+                bonusGhost.speed += change;
+                x++;
+            } 
+    }
+
 }
+
+
+
+
 [Serializable]
 class PlayerScores
 {
