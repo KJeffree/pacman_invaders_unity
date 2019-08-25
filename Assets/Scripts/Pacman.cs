@@ -94,6 +94,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     public void MakeInvincible()
     {
+        CancelInvoke("ChangePacmanColour");
         pacmanInvincible = true;
         InvokeRepeating("ChangePacmanColour", 0, 0.2f);
         StartCoroutine(CancelInvincible());
