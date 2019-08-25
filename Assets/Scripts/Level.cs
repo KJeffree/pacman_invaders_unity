@@ -11,7 +11,7 @@ using System.IO;
 public class Level : MonoBehaviour
 {
 
-    List<int> scores;
+    List<int> scores = new List<int>();
     SceneLoader sceneLoader;
     [SerializeField] AudioClip startGame;
 
