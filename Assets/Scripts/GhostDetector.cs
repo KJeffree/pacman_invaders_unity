@@ -9,10 +9,13 @@ public class GhostDetector : MonoBehaviour
 
     int timesCalled = 0;
 
+    Pacman pacman;
+
     // Start is called before the first frame update
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
+        pacman = FindObjectOfType<Pacman>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class GhostDetector : MonoBehaviour
     {
         if (collider.tag == "Ghost" && timesCalled == 0)
         {
+            pacman.Die();
             sceneLoader.LoadLoseScene();
             timesCalled++;
         }
