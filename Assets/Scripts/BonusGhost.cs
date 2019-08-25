@@ -23,7 +23,7 @@ public class BonusGhost : MonoBehaviour
     IEnumerator WaitAndLoad()
     {
         yield return new WaitForSeconds(4);
-        InvokeRepeating("BonusGhostMovement", 0, 0.02f);
+        InvokeRepeating("BonusGhostMovement", 0, 0.5f);
     }
 
 
