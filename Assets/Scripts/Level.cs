@@ -27,7 +27,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] GameObject saveScoreButton;
 
-    [SerializeField] int score;
+    int score = 0;
 
     [SerializeField] TextMeshProUGUI scoreText;
 
@@ -125,7 +125,7 @@ public class Level : MonoBehaviour
 
     public void SaveScore()
     {
-        Debug.Log(scores);
+        Debug.Log(score);
 
         scores.Add(score);
         BinaryFormatter bf = new BinaryFormatter();
@@ -140,7 +140,6 @@ public class Level : MonoBehaviour
         LoadHighScores();
 
         Debug.Log("Saved!");
-
         saveScoreButton.SetActive(false);
     }
 
