@@ -11,7 +11,7 @@ using System.IO;
 public class Level : MonoBehaviour
 {
 
-    List<int> scores = new List<int>();
+    Hashtable scores = new Hashtable();
     SceneLoader sceneLoader;
     [SerializeField] AudioClip startGame;
 
@@ -26,6 +26,8 @@ public class Level : MonoBehaviour
     [SerializeField] Sprite blankImage;
 
     [SerializeField] GameObject saveScoreButton;
+
+    [SerializeField] TMP_InputField initialTextField;
 
     int score = 0;
 
@@ -103,19 +105,33 @@ public class Level : MonoBehaviour
                 file.Close();
 
                 scores = playerScores.scores;
-                scores.Sort();
-                scores.Reverse();
                 String text = null;
 
-                for (int i=0; i < 4; i++)
+                if (scores.Count > 0)
                 {
-                    if (i < scores.Count)
-                    {
-                        text += scores[i].ToString() + "\n";
-                    }
-                }
+                    ICollection keys = scores.Keys;
+                    List<int> keysInt = new List<int>();
 
-                highscoreText.text = text;
+                    foreach (string key in keys)
+                    {
+                        int keyInt = Int32.Parse(key);
+                        keysInt.Add(keyInt);
+                    }
+
+                    keysInt.Sort();
+                    keysInt.Reverse();
+
+                    for (int i=0; i < 4; i++)
+                    {
+                        if (i < scores.Count)
+                        {
+                            string highscoreText = keysInt[i].ToString() + " : " + scores[keysInt[i].ToString()] + "\n";
+                            text += highscoreText;
+                        }
+                    }
+
+                    highscoreText.text = text;
+                }
                 Debug.Log("Loaded!");
             }
             
@@ -126,8 +142,11 @@ public class Level : MonoBehaviour
     public void SaveScore()
     {
         Debug.Log(score);
+        initialTextField = FindObjectOfType<TMP_InputField>();
+        var initials = initialTextField.text.ToString();
+        string scoreString = score.ToString();
 
-        scores.Add(score);
+        scores.Add(scoreString, initials);
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerScores.dat");
 
@@ -333,5 +352,5 @@ public class Level : MonoBehaviour
 [Serializable]
 class PlayerScores
 {
-    public List<int> scores;
+    public Hashtable scores;
 }
