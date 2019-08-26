@@ -7,10 +7,12 @@ public class SceneLoader : MonoBehaviour
 {
 
     [SerializeField] float delayInSeconds = 2f;
+
+    Level level;
     
     void Start()
     {
-        
+        level = FindObjectOfType<Level>();
     }
 
     public void LoadNextScene()
@@ -34,6 +36,7 @@ public class SceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(delayInSeconds);
         SceneManager.LoadScene(2);
+        level.LoadHighScores();
         CancelInvoke();
     }
 

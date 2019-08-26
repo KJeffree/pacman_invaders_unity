@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 
 public class Level : MonoBehaviour
 {
 
+    List<int> scores = new List<int>();
     SceneLoader sceneLoader;
     [SerializeField] AudioClip startGame;
 
@@ -18,12 +22,16 @@ public class Level : MonoBehaviour
     [SerializeField] int lives = 3;
 
     [SerializeField] GameObject[] livesImages;
+    GameObject lifeImage;
+    [SerializeField] Sprite blankImage;
 
-    [SerializeField] int score = 0;
+    [SerializeField] GameObject saveScoreButton;
+
+    [SerializeField] int score;
 
     [SerializeField] TextMeshProUGUI scoreText;
 
-    [SerializeField] TextMeshProUGUI livesText;
+    [SerializeField] TextMeshProUGUI highscoreText;
 
     public BonusGhost bonusGhost;
     float spawnTime = 15;
@@ -37,8 +45,11 @@ public class Level : MonoBehaviour
 
     GameObject ghostObject;
 
+    GhostHiveMind ghostHiveMind;
 
     int wave = 0;
+
+    Pacman pacman;
 
     private void Awake()
     {
@@ -56,6 +67,8 @@ public class Level : MonoBehaviour
 
     void Start()
     {
+        saveScoreButton.SetActive(false);
+
         sceneLoader = FindObjectOfType<SceneLoader>();
     
         InvokeRepeating("addBonusGhost", 0, spawnTime);
@@ -64,6 +77,92 @@ public class Level : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(startGame, Camera.main.transform.position);
 
+        ghostHiveMind = FindObjectOfType<GhostHiveMind>();
+
+        Invoke("AssignFruit", 2);
+
+        lifeImage = livesImages[0];
+
+        highscoreText.text = null;
+
+        pacman = FindObjectOfType<Pacman>();
+
+    }
+
+    public void LoadHighScores()
+    {
+        saveScoreButton.SetActive(true);
+
+        if(File.Exists(Application.persistentDataPath + "/playerScores.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerScores.dat", FileMode.Open);
+            if (file.Length != 0)
+            {
+                PlayerScores playerScores = (PlayerScores)bf.Deserialize(file);
+                file.Close();
+
+                scores = playerScores.scores;
+                scores.Sort();
+                scores.Reverse();
+                String text = null;
+
+                for (int i=0; i < 4; i++)
+                {
+                    if (i < scores.Count)
+                    {
+                        text += scores[i].ToString() + "\n";
+                    }
+                }
+
+                highscoreText.text = text;
+                Debug.Log("Loaded!");
+            }
+            
+        }
+        
+    }
+
+    public void SaveScore()
+    {
+        Debug.Log(scores);
+
+        scores.Add(score);
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/playerScores.dat");
+
+        PlayerScores playerScores = new PlayerScores();
+        playerScores.scores = scores;
+
+        bf.Serialize(file, playerScores);
+        file.Close();
+
+        LoadHighScores();
+
+        Debug.Log("Saved!");
+
+        saveScoreButton.SetActive(false);
+    }
+
+    void OnDisable()
+    {
+        highscoreText.text = null;
+        saveScoreButton.SetActive(false);
+    }
+
+    public void IncreaseLives()
+    {
+        if (lives < 3)
+        {
+            livesImages[lives].GetComponent<UnityEngine.UI.Image>().sprite = lifeImage.GetComponent<UnityEngine.UI.Image>().sprite;
+            lives++;
+
+        }
+    }
+
+    public void AssignFruit()
+    {
+        ghostHiveMind.AssignFruit();
     }
 
     public int GetEndScore()
@@ -83,9 +182,9 @@ public class Level : MonoBehaviour
 
     void Update()
     {
-        if (livesText && scoreText)
+        if (scoreText)
         {
-            UpdateLivesAndScoreText();
+            UpdateScoreText();
         }
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -125,6 +224,7 @@ public class Level : MonoBehaviour
             {
                 ghost.IncreaseSpeed();
             }
+            ghostHiveMind.IncreaseShooting();
             x++;
         }
     }
@@ -134,19 +234,25 @@ public class Level : MonoBehaviour
         lives -= 1;
         if (lives <= 0)
         {
-            FindObjectOfType<Pacman>().Die();
+            pacman.Die();
             sceneLoader.LoadLoseScene();
         }
-        Destroy(livesImages[lives]);
+        livesImages[lives].GetComponent<UnityEngine.UI.Image>().sprite = blankImage;
     }
 
      private void NextGhostWave()
     {
+        pacman.PreventShooting();
+        Pill[] pills = FindObjectsOfType<Pill>();
+        foreach (Pill pill in pills)
+        {
+            Destroy(pill);
+        }
         Vector3 startPosition= new Vector3(0.0f, 5.5f, 0.0f);
         ghostObject = Instantiate(ghostsPrefab, startPosition, ghostsSpwan.rotation);
         StartCoroutine(MoveToPosition(ghostObject.GetComponent<Transform>(), new Vector3(0.0f, 0.0f, 0.0f), 4));
         AudioSource.PlayClipAtPoint(newWave, Camera.main.transform.position);
-
+        Invoke("AssignFruit", 2);
     }
 
     public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
@@ -161,9 +267,8 @@ public class Level : MonoBehaviour
         }
     }
 
-    private void UpdateLivesAndScoreText()
+    private void UpdateScoreText()
     {
-        livesText.text = lives.ToString();
         scoreText.text = score.ToString();
     }
 
@@ -174,17 +279,21 @@ public class Level : MonoBehaviour
 
     public void UpdateScoreBonusGhost()
     {
-        score += 100;
+        score += 150;
     }
 
     public void UpdateScoreFruit()
     {
-        score += 75;
+        score += 30;
+    }
+
+    public void UpdateScoreCherry()
+    {
+        score += 100;
     }
 
     public void RemoveTextScoreAndLives()
     {
-        Destroy(livesText);
         Destroy(scoreText);
     }
 
@@ -193,16 +302,37 @@ public class Level : MonoBehaviour
         var spawnPointLeft = new Vector2(-1.39f, 9.32f);
         var spawnPointRight = new Vector2(13.39f, 9.32f);
 
-        if (Random.Range(0, 2) == 0)
+        if (UnityEngine.Random.Range(0, 2) == 0)
         {
             spawnPoint = spawnPointLeft;
-            bonusGhost.speed = 2.0f;
+            BonusGhostSpeedSet(2.0f, 0.1f);
         } else
         {
             spawnPoint = spawnPointRight;
-            bonusGhost.speed = -2.0f;
+            BonusGhostSpeedSet(-2.0f, -0.1f);
         }
 
         Instantiate(bonusGhost, spawnPoint, Quaternion.identity);
     }
+
+    private void BonusGhostSpeedSet(float speed, float change)
+    {
+        bonusGhost.speed = speed;
+            int x = 0;
+            while (x < wave)
+            {
+                bonusGhost.speed += change;
+                x++;
+            } 
+    }
+
+}
+
+
+
+
+[Serializable]
+class PlayerScores
+{
+    public List<int> scores;
 }

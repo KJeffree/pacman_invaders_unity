@@ -7,13 +7,18 @@ public class Fruit : MonoBehaviour
 
     private Rigidbody2D fruit;
     private Level level;
-    float speed = 2.00f;
+    private Barricade[] barricades;
+
+    private Pacman pacman;
+    float speed = 4.00f;
 
     
     void Start()
     {
         fruit = GetComponent<Rigidbody2D>();
         level = FindObjectOfType<Level>();
+        barricades = FindObjectsOfType<Barricade>();
+        pacman = FindObjectOfType<Pacman>();
     }
 
     
@@ -27,10 +32,37 @@ public class Fruit : MonoBehaviour
         }
     }
 
+    private void RestoreBarricades()
+    {
+        foreach (Barricade barricade in barricades)
+        {
+            barricade.Restore();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.tag == "Pacman")
         {
+            switch (gameObject.tag)
+            {
+                case "Cherry":
+                    level.UpdateScoreCherry();
+                    break;
+                case "Strawberry":
+                    RestoreBarricades();
+                    break;
+                case "Peach":
+                    pacman.MakeInvincible();
+                    break;
+                case "Apple":
+                    level.IncreaseLives();
+                    break;
+                default:
+                    break;
+            }
+
             Destroy(gameObject);
             collision.gameObject.GetComponent<Pacman>().EatFruit();
             level.UpdateScoreFruit();

@@ -10,7 +10,7 @@ public class Ghost : MonoBehaviour, ITouchWalls
 
     [SerializeField] GameObject ghostPill;
     [SerializeField] Transform ghostPillSpawn;
-    [SerializeField] GameObject fruit;
+    [SerializeField] Fruit fruit;
     [SerializeField] Transform fruitSpawn;
 
     GhostHiveMind ghostHiveMind;
@@ -29,15 +29,10 @@ public class Ghost : MonoBehaviour, ITouchWalls
     IEnumerator WaitAndLoad()
     {
         yield return new WaitForSeconds(4);
-        InvokeRepeating("ghostMovement", 0, 0.02f);
+        InvokeRepeating("GhostMovement", 0, 0.03f);
     }
 
-    void Update()
-    {
-        
-    }
-
-    private void ghostMovement()
+    private void GhostMovement()
     {
         float deltaX = speed * Time.deltaTime;
         if (!movingRight)
@@ -46,6 +41,11 @@ public class Ghost : MonoBehaviour, ITouchWalls
         }
         transform.Translate(deltaX, 0, 0);
         ghostHiveMind.FirePill();
+    }
+
+    public void StopMovement()
+    {
+        CancelInvoke("GhostMovement");
     }
 
     public void IncreaseSpeed()
@@ -84,9 +84,14 @@ public class Ghost : MonoBehaviour, ITouchWalls
         transform.Translate(0, -0.3f, 0);
     }
 
+    public void SetFruit(Fruit allocated_fruit)
+    {
+        fruit = allocated_fruit;
+    }
+
     public void Die()
     {
-        if (Random.Range(0, 10) == 0)
+        if (fruit)
         {
             Instantiate(fruit, fruitSpawn.position, fruitSpawn.rotation);
         }

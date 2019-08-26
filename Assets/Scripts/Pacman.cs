@@ -16,20 +16,36 @@ public class Pacman : MonoBehaviour, ITouchWalls
     public float fireRate;
     private float nextFire;
     private Animator animator;
+    bool pacmanInvincible = false;
+
+    GhostHiveMind ghostHiveMind;
 
     float animationTimout;
     bool touchingLeftWall = false;
     bool touchingRightWall = false;
 
+    bool colour = true;
+
     void Start()
     {
         StartCoroutine(WaitAndLoadStart());
         animator = this.GetComponent<Animator>();
+        ghostHiveMind = FindObjectOfType<GhostHiveMind>();
+
     }
+
+    public void PreventShooting()
+    {
+        CancelInvoke("PacmanBehaviour");
+        InvokeRepeating("PacmanMovement", 0, 0.02f);
+        StartCoroutine(WaitAndLoadStart());
+    }
+
 
     IEnumerator WaitAndLoadStart()
     {
         yield return new WaitForSeconds(4);
+        CancelInvoke("PacmanMovement");
         InvokeRepeating("PacmanBehaviour", 0, 0.02f);
     }
 
@@ -41,9 +57,7 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     private void PacmanBehaviour()
     {
-        var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        if (BlockedByWall(deltaX)) deltaX = 0;
-        transform.Translate(deltaX, 0, 0);
+        PacmanMovement();
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire)
         {
@@ -60,11 +74,20 @@ public class Pacman : MonoBehaviour, ITouchWalls
         }
     }
 
+    private void PacmanMovement()
+    {
+        var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        if (BlockedByWall(deltaX)) deltaX = 0;
+        transform.Translate(deltaX, 0, 0);
+    }
+
     public void Die()
     {
         CancelInvoke("PacmanBehaviour");
+        Destroy(GetComponent<PolygonCollider2D>());
         animator.SetInteger("Action", 2);
         AudioSource.PlayClipAtPoint(pacmanDie, Camera.main.transform.position);
+        ghostHiveMind.StopGhostMovement();
     }
 
     public void HitByPill()
@@ -81,6 +104,43 @@ public class Pacman : MonoBehaviour, ITouchWalls
         {
             GetComponent<Transform>().position = new Vector3(1.60f, transform.position.y, transform.position.z);
             StartCoroutine(WaitAndLoadHit());
+        }
+    }
+
+    public bool GetPacmanInvincibility()
+    {
+        return pacmanInvincible;
+    }
+
+    public void MakeInvincible()
+    {
+        CancelInvoke("ChangePacmanColour");
+        pacmanInvincible = true;
+        InvokeRepeating("ChangePacmanColour", 0, 0.2f);
+        StartCoroutine(CancelInvincible());
+    }
+
+    IEnumerator CancelInvincible()
+    {
+        yield return new WaitForSeconds(5);
+        CancelInvoke("ChangePacmanColour");
+        pacmanInvincible = false;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+    }
+
+    void ChangePacmanColour()
+    {
+        var color1 = new Color(1, 0, 0, 1);
+        var color2 = new Color(1, 1, 1, 1);
+
+        colour = !colour;
+
+        if (colour)
+        {
+            GetComponent<SpriteRenderer>().color = color1;
+        } else 
+        {
+            GetComponent<SpriteRenderer>().color = color2;
         }
     }
 
