@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pacman : MonoBehaviour, ITouchWalls
 {
-    float speed = 10.00f;
+    float speed = 5.00f;
 
     [SerializeField] AudioClip pacmanDie;
     [SerializeField] AudioClip pacmanHit;
@@ -76,9 +76,20 @@ public class Pacman : MonoBehaviour, ITouchWalls
 
     private void PacmanMovement()
     {
-        var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        if (BlockedByWall(deltaX)) deltaX = 0;
-        transform.Translate(deltaX, 0, 0);
+        var deltaX = speed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            if (BlockedByWall(deltaX)) deltaX = 0;
+            transform.Translate(deltaX, 0, 0);
+        } else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            if (BlockedByWall(-deltaX)) deltaX = 0;
+            transform.Translate(-deltaX, 0, 0);
+        }
+
+        // var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        // 
+        // 
     }
 
     public void Die()

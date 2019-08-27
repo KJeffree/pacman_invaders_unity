@@ -94,6 +94,7 @@ public class Level : MonoBehaviour
     public void LoadHighScores()
     {
         saveScoreButton.SetActive(true);
+        // File.Delete(Application.persistentDataPath + "/playerScores.dat");
 
         if(File.Exists(Application.persistentDataPath + "/playerScores.dat"))
         {
