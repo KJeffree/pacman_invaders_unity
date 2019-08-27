@@ -15,7 +15,7 @@ public class GameOver : MonoBehaviour
     {
         level = FindObjectOfType<Level>();
         score = level.GetEndScore();
-        scoreText.text = "You scored: " + score.ToString();
+        scoreText.text = "Final Score: " + score.ToString();
         level.RemoveTextScoreAndLives();
     }
 
