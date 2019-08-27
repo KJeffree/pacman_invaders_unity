@@ -14,12 +14,12 @@ public class GhostHiveMind : MonoBehaviour
     {
         Level level = FindObjectOfType<Level>();
         int i=0;
-        int amount = 4;
+        int amount = 44;
         while (i < amount)
         {
             int ghostIndex = Random.Range(0, ghosts.Count-1);
             int index = Random.Range(0, Mathf.Clamp(i, 0, level.GetWaveNumber()) + 1);
-            ghosts[ghostIndex].SetFruit(fruits[index]);
+            ghosts[ghostIndex].SetFruit(fruits[2]);
             i++;
         }
     }
