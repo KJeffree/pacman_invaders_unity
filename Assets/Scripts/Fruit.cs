@@ -65,7 +65,6 @@ public class Fruit : MonoBehaviour
 
             Destroy(gameObject);
             collision.gameObject.GetComponent<Pacman>().EatFruit();
-            level.UpdateScoreFruit();
         }
         
         

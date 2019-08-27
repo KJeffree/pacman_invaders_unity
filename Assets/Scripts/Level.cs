@@ -301,11 +301,6 @@ public class Level : MonoBehaviour
         score += 150;
     }
 
-    public void UpdateScoreFruit()
-    {
-        score += 30;
-    }
-
     public void UpdateScoreCherry()
     {
         score += 100;
