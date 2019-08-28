@@ -11,7 +11,7 @@ using System.IO;
 public class Level : MonoBehaviour
 {
 
-    Hashtable scores = new Hashtable();
+    List<PlayerScore> scores = new List<PlayerScore>();
     SceneLoader sceneLoader;
     [SerializeField] AudioClip startGame;
 
@@ -91,10 +91,15 @@ public class Level : MonoBehaviour
 
     }
 
+    static int SortByScore(PlayerScore p1, PlayerScore p2)
+    {
+        return p1.score.CompareTo(p2.score);
+    }
+
     public void LoadHighScores()
     {
         saveScoreButton.SetActive(true);
-        //File.Delete(Application.persistentDataPath + "/playerScores.dat");
+        // File.Delete(Application.persistentDataPath + "/playerScores.dat");
 
         if(File.Exists(Application.persistentDataPath + "/playerScores.dat"))
         {
@@ -110,23 +115,14 @@ public class Level : MonoBehaviour
 
                 if (scores.Count > 0)
                 {
-                    ICollection keys = scores.Keys;
-                    List<int> keysInt = new List<int>();
-
-                    foreach (string key in keys)
-                    {
-                        int keyInt = Int32.Parse(key);
-                        keysInt.Add(keyInt);
-                    }
-
-                    keysInt.Sort();
-                    keysInt.Reverse();
+                    scores.Sort(SortByScore);
+                    scores.Reverse();
 
                     for (int i=0; i < 4; i++)
                     {
                         if (i < scores.Count)
                         {
-                            string highscoreText = keysInt[i].ToString() + " : " + scores[keysInt[i].ToString()] + "\n";
+                            string highscoreText = scores[i].score.ToString() + " : " + scores[i].initials.ToString() + "\n";
                             text += highscoreText;
                         }
                     }
@@ -144,9 +140,12 @@ public class Level : MonoBehaviour
     {
         initialTextField = FindObjectOfType<TMP_InputField>();
         var initials = initialTextField.text.ToString();
-        string scoreString = score.ToString();
+        
+        PlayerScore playerScore = new PlayerScore();
+        playerScore.initials = initials;
+        playerScore.score = score;
 
-        scores.Add(scoreString, initials);
+        scores.Add(playerScore);
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerScores.dat");
 
@@ -341,11 +340,15 @@ public class Level : MonoBehaviour
 
 }
 
-
-
+[Serializable]
+class PlayerScore
+{
+    public String initials;
+    public int score;
+}
 
 [Serializable]
 class PlayerScores
 {
-    public Hashtable scores;
+    public List<PlayerScore> scores;
 }
