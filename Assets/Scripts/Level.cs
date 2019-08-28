@@ -244,9 +244,9 @@ public class Level : MonoBehaviour
             {
                 ghost.IncreaseSpeed();
             }
-            ghostHiveMind.IncreaseShooting();
             x++;
         }
+        ghostHiveMind.IncreaseShooting();
     }
 
     public void LoseLife()
