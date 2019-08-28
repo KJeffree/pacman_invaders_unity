@@ -94,7 +94,7 @@ public class Level : MonoBehaviour
     public void LoadHighScores()
     {
         saveScoreButton.SetActive(true);
-        // File.Delete(Application.persistentDataPath + "/playerScores.dat");
+        //File.Delete(Application.persistentDataPath + "/playerScores.dat");
 
         if(File.Exists(Application.persistentDataPath + "/playerScores.dat"))
         {
@@ -142,7 +142,6 @@ public class Level : MonoBehaviour
 
     public void SaveScore()
     {
-        Debug.Log(score);
         initialTextField = FindObjectOfType<TMP_InputField>();
         var initials = initialTextField.text.ToString();
         string scoreString = score.ToString();
