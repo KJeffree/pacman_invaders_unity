@@ -100,7 +100,7 @@ public class Level : MonoBehaviour
     {
         saveScoreButton.SetActive(true);
         // File.Delete(Application.persistentDataPath + "/playerScores.dat");
-
+        
         if(File.Exists(Application.persistentDataPath + "/playerScores.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -139,26 +139,29 @@ public class Level : MonoBehaviour
     public void SaveScore()
     {
         initialTextField = FindObjectOfType<TMP_InputField>();
-        var initials = initialTextField.text.ToString();
-        
-        PlayerScore playerScore = new PlayerScore();
-        playerScore.initials = initials;
-        playerScore.score = score;
+        if (initialTextField.text.Length == 3)
+        {
+            var initials = initialTextField.text.ToString();
+            
+            PlayerScore playerScore = new PlayerScore();
+            playerScore.initials = initials;
+            playerScore.score = score;
 
-        scores.Add(playerScore);
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/playerScores.dat");
+            scores.Add(playerScore);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(Application.persistentDataPath + "/playerScores.dat");
 
-        PlayerScores playerScores = new PlayerScores();
-        playerScores.scores = scores;
+            PlayerScores playerScores = new PlayerScores();
+            playerScores.scores = scores;
 
-        bf.Serialize(file, playerScores);
-        file.Close();
+            bf.Serialize(file, playerScores);
+            file.Close();
 
-        LoadHighScores();
+            LoadHighScores();
 
-        Debug.Log("Saved!");
-        saveScoreButton.SetActive(false);
+            Debug.Log("Saved!");
+            saveScoreButton.SetActive(false);
+        }
     }
 
     void OnDisable()
