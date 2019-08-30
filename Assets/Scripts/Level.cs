@@ -35,6 +35,8 @@ public class Level : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI highscoreText;
 
+    [SerializeField] TextMeshProUGUI readyText;
+
     public BonusGhost bonusGhost;
     float spawnTime = 15;
     Vector2 spawnPoint;
@@ -87,8 +89,18 @@ public class Level : MonoBehaviour
 
         highscoreText.text = null;
 
+        readyText.text = "READY!";
+
+        StartCoroutine(WaitAndRemoveText());
+
         pacman = FindObjectOfType<Pacman>();
 
+    }
+
+    IEnumerator WaitAndRemoveText()
+    {
+        yield return new WaitForSeconds(4);
+        readyText.text = null;
     }
 
     static int SortByScore(PlayerScore p1, PlayerScore p2)
