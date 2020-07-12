@@ -559,7 +559,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1225104755}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -1668,51 +1668,6 @@ PrefabInstance:
       propertyPath: m_lineSpacing
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 7588114931851228323, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1179458995360826628, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1179458995360826628, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 300.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 276
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 176.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 65.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588114931851228324, guid: 4e226e436ef57431f97d06638d749fa0,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7588114932520215846, guid: 4e226e436ef57431f97d06638d749fa0,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1772,6 +1727,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179458995360826628, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179458995360826628, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588114931851228323, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 176.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 65.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588114932520215847, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588114931851228324, guid: 4e226e436ef57431f97d06638d749fa0,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7588114931365659179, guid: 4e226e436ef57431f97d06638d749fa0,
         type: 3}
