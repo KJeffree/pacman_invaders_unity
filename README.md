@@ -11,6 +11,7 @@ We spent 6 weeks working on this game, sometimes working together in a group and
 - User can fire pills at the ghosts by hitting spacebar.
 - Ghosts move right and left, moving down the screen when they hit a wall.
 - If all ghosts are destroyed, game moves onto the next level.
+- Ghosts will move faster as the levels increase.
 - PacMan loses a life when hit by a pill.
 - Player earns points when destroying ghosts
 - Ghosts randomly fire pills down the screen towards PacMan.
