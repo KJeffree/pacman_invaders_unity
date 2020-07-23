@@ -21,4 +21,4 @@ We spent 6 weeks working on this game, sometimes working together in a group and
 
 
 #### Play the game:
-To play the game, clone this repo, and open "Standalone Build". A prompt will appear asking for a resolution. Choose 800 x 600 and then click Play!
+To play the game, clone this repo, and open "Standalone Build". To quit the game, either click the red cross in the top left of the window, or press the escape button.
